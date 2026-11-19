@@ -1,9 +1,22 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+@font-face {
+  font-family: 'BlackClover';
+  src: url('./fonts/BlackCloverFont.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   font-family: 'Inter', sans-serif;
-  color: #f1f5f2;
-  background: #080d0b;
+  color: #29251f;
+  background: #f5f0e6;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
@@ -12,20 +25,39 @@
   --gold: #d9b76b;
   --red: #b94750;
   --yellow: #c6a344;
-  --panel: #101814;
-  --border: #26352c;
+  --panel: #f5f0e6;
+  --border: #ddd3c2;
+  --text: #29251f;
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
   margin: 0;
+  overscroll-behavior: none;
+}
+
+html {
+  overflow-x: clip;
+  background-color: #f5f0e6;
+}
+
+body {
   min-width: 320px;
   min-height: 100vh;
-  background: radial-gradient(ellipse at 50% 0%, #153d2b 0%, transparent 45%),
-    radial-gradient(ellipse at 0% 70%, #10251b 0%, transparent 35%), #080d0b;
+  overflow-x: clip;
+  background-image: url('/fondo.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 button,
@@ -37,12 +69,16 @@ button {
   cursor: pointer;
 }
 
+/* =========================================
+   PÁGINA Y ENCABEZADO
+========================================= */
+
 .page {
+  position: relative;
   width: min(1440px, 100%);
   min-height: 100vh;
-  margin: auto;
+  margin: 0 auto;
   padding: 48px 28px 24px;
-  position: relative;
   overflow: hidden;
 }
 
@@ -58,9 +94,9 @@ button {
 }
 
 .header {
-  text-align: center;
-  margin: 0 auto 38px;
   position: relative;
+  margin: 0 auto 38px;
+  text-align: center;
   animation: appear 0.8s ease both;
 }
 
@@ -73,46 +109,106 @@ button {
   animation: cloverGlow 3s ease-in-out infinite;
 }
 
-.header h1 {
-  margin: 0;
-  font-family: 'Cinzel', serif;
-  font-size: clamp(30px, 5vw, 54px);
-  font-weight: 800;
-  letter-spacing: 4px;
-  line-height: 1.2;
+header.header h1.cloverdle-title {
+  width: 100%;
+  max-width: none;
+  margin: 30px 0;
+  font-family: 'BlackClover', serif;
+  font-size: 150px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
   color: #f4f7f3;
-  text-shadow: 0 3px 25px rgba(40, 209, 124, 0.18);
+  text-shadow:
+    2px 3px 6px rgba(0, 0, 0, 0.65),
+    0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.header p {
-  margin: 14px 0 20px;
-  color: #aab9af;
-  font-size: 14px;
+.header > p:not(.daily-countdown) {
+  color: #f1f1f1;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
 }
 
-.mode {
+.header .mode {
   display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid #35634a;
-  border-radius: 999px;
-  color: #9ce6b9;
-  background: rgba(27, 75, 49, 0.45);
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(20, 20, 20, 0.75);
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
+
+.cloverdle-back {
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  color: white;
+  background: rgba(15, 15, 15, 0.75);
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cloverdle-back:hover {
+  background: rgba(40, 60, 45, 0.95);
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   CONTADOR DIARIO
+========================================= */
+
+.daily-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  min-width: 210px;
+  margin: 18px auto;
+  padding: 14px 24px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  background: rgba(10, 10, 15, 0.88);
+  border: 1px solid rgba(163, 230, 53, 0.45);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.daily-countdown strong {
+  color: #a3e635;
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 10px rgba(163, 230, 53, 0.2);
+}
+
+/* =========================================
+   PANEL PRINCIPAL
+========================================= */
 
 .game {
+  position: relative;
   width: 100%;
   max-width: 1250px;
   margin: 0 auto;
   padding: 28px;
-  position: relative;
-  background: rgba(14, 21, 17, 0.88);
-  border: 1px solid var(--border);
+  background: #f5f0e6;
+  color: #29251f;
+  border: 1px solid #ddd3c2;
   border-radius: 20px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28),
-    inset 0 1px rgba(255, 255, 255, 0.025);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
   animation: appear 0.7s ease 0.1s both;
 }
 
@@ -120,19 +216,31 @@ button {
   margin: 0 0 8px;
   font-family: 'Cinzel', serif;
   font-size: 23px;
-  color: #f4f7f3;
+  color: #30271f;
+  text-shadow: none;
 }
 
 .instructions {
   margin: 0 0 24px;
-  color: #98a89d;
+  color: #29251f;
   font-size: 13px;
   line-height: 1.6;
 }
 
+.attempts {
+  margin: 22px 0 0;
+  color: #29251f;
+  font-size: 12px;
+}
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
 .search {
   position: relative;
   z-index: 5;
+  width: 100%;
   max-width: 580px;
   margin-bottom: 24px;
 }
@@ -141,47 +249,108 @@ button {
   width: 100%;
   height: 54px;
   padding: 0 18px;
-  border: 1px solid #34483b;
+  border: 1px solid #c9bba5;
   border-radius: 10px;
   outline: none;
-  color: #f4f7f3;
-  background: #0a100c;
+  color: #29251f;
+  background: #fffcf5;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .search input::placeholder {
-  color: #66766b;
+  color: #817565;
+  opacity: 1;
 }
 
 .search input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(40, 209, 124, 0.1);
+  border-color: #28a963;
+  box-shadow: 0 0 0 3px rgba(40, 169, 99, 0.12);
 }
 
+.search input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
+/* =========================================
+   SUGERENCIAS
+========================================= */
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 6px;
+  background: #fffcf5;
+  border: 1px solid #c9bba5;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  animation: dropdown 0.18s ease both;
+}
+
+.suggestions .suggestion {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  justify-content: start;
+  column-gap: 12px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  color: #29251f;
+  background: transparent;
+  text-align: left;
+  white-space: normal;
+  transition: background 0.15s, color 0.15s;
+}
+
+.suggestions .suggestion:hover {
+  color: #29251f;
+  background: #e7ddca;
+}
+
+.suggestions .suggestion-portrait {
+  display: block;
+  width: 64px;
+  height: 64px;
+  max-width: none;
+  flex: none;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.suggestions .suggestion span {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  writing-mode: horizontal-tb;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
 
 .empty {
   padding: 12px;
-  color: #9aa89e;
+  color: #625747;
   font-size: 13px;
 }
 
-.win {
-  margin: 16px 0;
-  padding: 15px;
-  color: #aaf4c6;
-  background: #123923;
-  border: 1px solid #27854e;
-  border-radius: 10px;
-  animation: winPop 0.45s ease both;
-}
+/* =========================================
+   LEYENDA
+========================================= */
 
 .legend {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
   margin: 0 0 18px;
-  color: #9eaea3;
+  color: #5e594f;
   font-size: 11px;
 }
 
@@ -192,9 +361,9 @@ button {
 }
 
 .dot {
+  display: inline-block;
   width: 9px;
   height: 9px;
-  display: inline-block;
   border-radius: 3px;
 }
 
@@ -210,10 +379,19 @@ button {
   background: #b94750;
 }
 
+/* =========================================
+   TABLA DE RESULTADOS - ESCRITORIO
+========================================= */
+
 .results {
+  position: relative;
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .result-row {
@@ -244,8 +422,9 @@ button {
 
 .result-row.labels > div {
   min-height: 42px;
+  padding: 5px;
   border: none;
-  color: #9cac9f;
+  color: #30271f;
   background: transparent;
   font-size: 10px;
   font-weight: 800;
@@ -254,14 +433,52 @@ button {
 }
 
 .name-cell {
-  justify-content: flex-start !important;
+  justify-content: flex-start;
   color: #f0f5f1;
   background: #18221b;
   font-weight: 700;
-  text-align: left !important;
+  text-align: left;
 }
 
+/* =========================================
+   IMÁGENES DE PERSONAJES - ESCRITORIO
+========================================= */
+
+.result-row .character-cell {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  min-height: 100px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: 8px;
+  background: #18221b;
+  box-sizing: border-box;
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top center;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   COLORES DE LAS CELDAS
+========================================= */
+
 .cell {
+  position: relative;
   color: white;
   font-weight: 600;
   transform-origin: center;
@@ -269,349 +486,125 @@ button {
 }
 
 .cell.correct {
-  background: linear-gradient(145deg, #17683d, #10452c);
-  border-color: #258c51;
-  box-shadow: inset 0 0 16px rgba(40, 209, 124, 0.06);
+  background: #159447;
+  border-color: #20c45a;
+  box-shadow: none;
 }
 
 .cell.partial {
-  color: #fff1c7;
-  background: linear-gradient(145deg, #705923, #493a1a);
-  border-color: #a88732;
-  box-shadow: inset 0 0 16px rgba(217, 183, 107, 0.05);
+  color: #fff;
+  background: #a17a12;
+  border-color: #d6a928;
+  box-shadow: none;
 }
 
 .cell.wrong {
-  background: linear-gradient(145deg, #692d34, #421e24);
-  border-color: #854047;
+  background: #a52d38;
+  border-color: #d6424e;
+  box-shadow: none;
 }
 
 .result-row:not(.labels):hover .cell {
-  filter: brightness(1.15);
-}
-
-.attempts {
-  margin: 22px 0 0;
-  color: #899a8e;
-  font-size: 12px;
-}
-
-.restart {
-  margin-top: 18px;
-  padding: 12px 20px;
-  border: 1px solid #389b60;
-  border-radius: 9px;
-  color: #06140b;
-  background: linear-gradient(135deg, #51e28e, #1eae61);
-  font-weight: 800;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.restart:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(40, 209, 124, 0.2);
-}
-
-footer {
-  padding: 28px 0 8px;
-  color: #64746a;
-  text-align: center;
-  font-size: 11px;
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes dropdown {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-@keyframes cellReveal {
-  0% {
-    opacity: 0;
-    transform: rotateX(90deg);
-  }
-
-  100% {
-    opacity: 1;
-    transform: rotateX(0);
-  }
-}
-
-@keyframes cloverGlow {
-  0%,
-  100% {
-    text-shadow: 0 0 14px rgba(40, 209, 124, 0.25);
-  }
-  50% {
-    text-shadow: 0 0 32px rgba(40, 209, 124, 0.65);
-  }
-}
-
-@keyframes winPop {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@media (max-width: 700px) {
-  .page {
-    padding: 30px 12px 18px;
-  }
-
-  .header {
-    margin-bottom: 26px;
-  }
-
-  .header h1 {
-    letter-spacing: 2px;
-  }
-
-  .header p {
-    max-width: 300px;
-    margin: 12px auto 18px;
-    line-height: 1.6;
-  }
-
-  .game {
-    padding: 18px 12px;
-    border-radius: 14px;
-  }
-
-  .game h2 {
-    font-size: 20px;
-  }
-
-  .legend {
-    gap: 10px;
-  }
-
-  .result-row {
-    grid-template-columns: 100px repeat(6, minmax(105px, 1fr));
-    min-width: 800px;
-  }
-
-  .result-row > div {
-    min-height: 56px;
-    padding: 8px;
-    font-size: 11px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-.arc-cell {
-  position: relative;
-  overflow: hidden;
-}
-
-.arc-arrow {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
-  font-weight: 900;
-  opacity: 0.28;
-  z-index: 0;
-  pointer-events: none;
+  filter: none;
 }
 
 .cell-text {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  color: #fff;
+  visibility: visible;
+  opacity: 1;
 }
 
+/* =========================================
+   FLECHAS DE LOS ARCOS
+========================================= */
 
-
-.character-cell {
-  width: 100px;
-  min-width: 100px;
-  height: 100px;
-  padding: 0;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  overflow: hidden;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 8px;
-}
-
-.character-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  border: none;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background-image: url('/fondo.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-
-.suggestions {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  right: 0;
-  max-height: 280px;
-  overflow-y: auto;
-  padding: 6px;
-  background: #111a14;
-  border: 1px solid #34483b;
-  border-radius: 10px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
-  animation: dropdown 0.18s ease both;
-}
-
-.suggestion {
+.arc-cell {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-width: 0;
-  padding: 8px 12px;
-  text-align: left;
-  border: none;
-  border-radius: 6px;
-  color: #e1e9e3;
-  background: transparent;
-  transition: background 0.15s, color 0.15s;
-  cursor: pointer;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.suggestion:hover {
-  color: #b5f5ce;
-  background: #1b3827;
-}
-
-.suggestion-portrait {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 6px;
+.arc-cell .arc-arrow {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0.28;
+  visibility: visible;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
   flex-shrink: 0;
 }
 
-.suggestion span {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: normal;
-  word-break: normal;
+.arc-cell .arc-arrow path {
+  fill: #000;
+  stroke: #000;
 }
 
+.arc-cell .cell-text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  color: #fff;
+  visibility: visible;
+  opacity: 1;
+}
 
-.daily-countdown {
+/* =========================================
+   VICTORIA Y RESULTADO COMPARTIDO
+========================================= */
+
+.victory-overlay {
+  position: static;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-
-  width: fit-content;
-  min-width: 210px;
-  margin: 18px auto;
-  position: relative;
-  left: 0;
-
-  padding: 14px 24px;
+  gap: 18px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px;
+  background: transparent;
   box-sizing: border-box;
-
-  background: rgba(10, 10, 15, 0.88);
-  border: 1px solid rgba(163, 230, 53, 0.45);
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-
-  color: #e5e7eb;
-  font-size: 0.9rem;
-  text-align: center;
 }
 
-.daily-countdown strong {
-  font-size: 1.7rem;
-  letter-spacing: 3px;
-  color: #a3e635;
-  font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 10px rgba(163, 230, 53, 0.2);
-}
-
-.daily-countdown {
+.victory-modal,
+.share-card {
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 18px 0;
-}
-
-.victory-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(6px);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .victory-modal {
-  position: relative;
-  width: 100%;
-  max-width: 390px;
   max-height: 90vh;
   overflow-y: auto;
-  box-sizing: border-box;
   padding: 30px 24px;
   text-align: center;
-  color: #f3f4f6;
-  background: linear-gradient(145deg, #171a19, #080909);
-  border: 1px solid rgba(163, 230, 53, 0.65);
-  border-radius: 16px;
-  box-shadow: 0 0 35px rgba(163, 230, 53, 0.13);
-  animation: victory-appear 0.3s ease-out;
+  color: #29251f;
+  background: #f5f0e6;
+  border: 1px solid #ddd3c2;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+.victory-modal h2,
+.victory-modal h3,
+.victory-modal p,
+.victory-modal span {
+  color: #29251f;
 }
 
 .victory-close {
@@ -620,14 +613,14 @@ body {
   right: 14px;
   border: none;
   background: transparent;
-  color: #d1d5db;
+  color: #29251f;
   font-size: 28px;
   cursor: pointer;
 }
 
 .victory-label {
   margin: 0 0 10px;
-  color: #a3e635;
+  color: #4b7b20;
   font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 2px;
@@ -642,8 +635,8 @@ body {
   display: block;
   width: 135px;
   height: 135px;
+  margin: 14px auto;
   object-fit: cover;
-  margin: 0 auto 14px;
   border: 2px solid #a3e635;
   border-radius: 12px;
   box-shadow: 0 0 18px rgba(163, 230, 53, 0.2);
@@ -656,11 +649,11 @@ body {
 
 .victory-attempts {
   margin: 0 0 20px;
-  color: #d1d5db;
+  color: #29251f;
 }
 
 .victory-attempts strong {
-  color: #a3e635;
+  color: #4b7b20;
   font-size: 1.2rem;
 }
 
@@ -669,8 +662,9 @@ body {
   flex-direction: column;
   gap: 8px;
   padding: 14px;
-  margin-bottom: 20px;
-  background: rgba(0, 0, 0, 0.45);
+  margin: 20px 0;
+  color: #e5e7eb;
+  background: #080a08;
   border: 1px solid rgba(163, 230, 53, 0.25);
   border-radius: 10px;
 }
@@ -698,490 +692,11 @@ body {
   background: #bef264;
 }
 
-@keyframes victory-appear {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.victory-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999999 !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  padding: 20px;
-  box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(6px);
-}
-
-.victory-modal {
-  position: relative !important;
-  width: 100%;
-  max-width: 390px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-sizing: border-box;
-  padding: 30px 24px;
-  margin: auto;
-
-  text-align: center;
-  color: #f3f4f6;
-  background: #111411;
-  border: 1px solid #a3e635;
-  border-radius: 16px;
-  box-shadow: 0 0 35px rgba(163, 230, 53, 0.2);
-}
-
-.victory-overlay .victory-portrait {
-  display: block;
-  width: 135px;
-  height: 135px;
-  object-fit: cover;
-  margin: 14px auto;
-  border-radius: 12px;
-}
-
-.victory-overlay .victory-label {
-  color: #a3e635;
-  font-size: 1.5rem;
-  font-weight: 900;
-}
-
-.victory-overlay .victory-countdown {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px;
-  margin: 20px 0;
-  background: #080a08;
-  border-radius: 10px;
-}
-
-.victory-overlay .victory-countdown strong {
-  color: #a3e635;
-  font-size: 1.8rem;
-}
-
-.victory-overlay .victory-close {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.victory-overlay .victory-button {
-  width: 100%;
-  padding: 12px;
-  background: #a3e635;
-  color: #111;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-
-/* Corrección del menú de sugerencias */
-.suggestions .suggestion {
-  display: grid !important;
-  grid-template-columns: 64px minmax(0, 1fr) !important;
-  align-items: center !important;
-  justify-content: start !important;
-  column-gap: 12px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  white-space: normal !important;
-}
-
-.suggestions .suggestion-portrait {
-  display: block !important;
-  width: 64px !important;
-  height: 64px !important;
-  max-width: none !important;
-  flex: none !important;
-  object-fit: cover !important;
-}
-
-.suggestions .suggestion span {
-  display: block !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  writing-mode: horizontal-tb !important;
-  white-space: normal !important;
-  word-break: normal !important;
-  overflow-wrap: break-word !important;
-  text-align: left !important;
-}
-
-
-/* La imagen debe ocupar toda la casilla, sin marco ni espacio interior */
-.result-row .character-cell {
-  padding: 0 !important;
-  border: none !important;
-  border-radius: 8px;
-  overflow: hidden;
-  min-height: 100px;
-  height: 100px;
-  box-sizing: border-box;
-}
-
-.result-row .character-cell .character-image {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  min-width: 100% !important;
-  min-height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  border-radius: 8px;
-  object-fit: cover;
-  box-sizing: border-box;
-}
-
-
-@media (max-width: 700px) {
-  .daily-countdown {
-    position: relative;
-    left: auto;
-    transform: none;
-    width: fit-content;
-    max-width: 100%;
-    min-width: 0;
-    margin: 18px auto;
-    box-sizing: border-box;
-  }
-}
-
-
-/* Colores sólidos más intensos */
-.cell.correct {
-  background: #159447 !important;
-  border-color: #20c45a !important;
-  box-shadow: none !important;
-}
-
-.cell.partial {
-  background: #a17a12 !important;
-  border-color: #d6a928 !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
-}
-
-.cell.wrong {
-  background: #a52d38 !important;
-  border-color: #d6424e !important;
-  box-shadow: none !important;
-}
-
-/* Sin cambios de brillo al pasar el cursor */
-.result-row:not(.labels):hover .cell {
-  filter: none !important;
-}
-
-
-.arc-arrow {
-  display: inline-block;
-  color: #333 !important;
-  font-family: Arial, sans-serif;
-  font-size: 25px !important;
-  font-weight: 900 !important;
-  line-height: 1;
-  -webkit-text-stroke: 1.2px #333;
-  filter: none !important;
-  transform: scaleX(1.5);
-  transform-origin: center;
-}
-
-.arc-arrow {
-  display: block;
-  width: 20px;
-  height: 24px;
-  flex-shrink: 0;
-  margin: 0 auto;
-}
-
-.arc-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-}
-.arc-cell {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.arc-cell .arc-arrow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 80px;
-  margin: 0;
-  flex-shrink: 0;
-}
-
-.arc-cell .cell-text {
-  visibility: visible;
-}
-@font-face {
-  font-family: 'BlackClover';
-  src: url('./fonts/BlackCloverFont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-h1.cloverdle-title {
-  font-family: 'BlackClover', serif !important;
-  font-size: 128px;
-  font-weight: 400;
-  text-transform: uppercase;
-  line-height: 1.1;
-  margin: 20px 0;
-}
-@font-face {
-  font-family: 'BlackClover';
-  src: url('./fonts/BlackCloverFont.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-h1.cloverdle-title {
-  font-family: 'BlackClover', serif !important;
-  font-size: 42px;
-  font-weight: 400;
-  text-transform: none;
-  text-shadow:
-  2px 3px 6px rgba(0, 0, 0, 0.65),
-  0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-header.header h1.cloverdle-title {
-  font-family: 'BlackClover', serif !important;
-  font-size: 150px !important;
-  line-height: 1 !important;
-  font-weight: 400 !important;
-  max-width: none !important;
-  width: 100% !important;
-  margin: 30px 0 !important;
-  transform: none !important;
-}
-
-.header > p:not(.daily-countdown) {
-  color: #f1f1f1;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
-  font-weight: 500;
-}
-
-.header .mode {
-  display: inline-block;
-  color: #ffffff;
-  background: rgba(20, 20, 20, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 7px 14px;
-  border-radius: 6px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-}
-.header-info {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin: 20px auto;
-  padding: 18px 28px;
-  max-width: calc(100% - 56px);
-  background: rgba(15, 15, 15, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
-}
-
-.header-info p {
-  margin: 0;
-  color: #fff;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: center;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.header-info .mode {
-  display: inline-block;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 6px;
-  padding: 7px 14px;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.header-info {
-  background: #F5F0E6;
-  color: #29251F;
-  border: 1px solid #DDD3C2;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-}
-
-.header-info p {
-  color: #29251F;
-  text-shadow: none;
-}
-
-.header-info .mode {
-  background: #E7DDCA;
-  color: #29251F;
-  border-color: #D2C4AC;
-}
-
-.game {
-  background: #F5F0E6;
-  color: #29251F;
-  border: 1px solid #DDD3C2;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
-}
-
-.game h2,
-.game .instructions,
-.game .attempts {
-  color: #29251F;
-  text-shadow: none;
-}
-
-/* Títulos de sección */
-.game h2 {
-  color: #30271F !important;
-  text-shadow: none !important;
-}
-
-/* Buscador */
-.search input {
-  background: #FFFCF5 !important;
-  color: #29251F !important;
-  border: 1px solid #C9BBA5 !important;
-}
-
-.search input::placeholder {
-  color: #817565 !important;
-  opacity: 1;
-}
-
-/* Lista desplegable de personajes */
-.suggestions {
-  background: #FFFCF5 !important;
-  border: 1px solid #C9BBA5 !important;
-}
-
-.suggestion {
-  background: transparent !important;
-  color: #29251F !important;
-}
-
-.suggestion:hover {
-  background: #E7DDCA !important;
-}
-
-.empty {
-  color: #625747 !important;
-}
-
-/* Encabezados de la tabla */
-.result-row.labels > div {
-  color: #30271F !important;
-  font-weight: 800 !important;
-  text-shadow: none !important;
-}
-
-.victory-overlay {
-  position: static !important;
-  inset: auto !important;
-  display: flex;
-  justify-content: center;
-  padding: 20px 16px;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  z-index: auto !important;
-}
-
-.victory-modal {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  background: #F5F0E6 !important;
-  color: #29251F !important;
-  border: 1px solid #DDD3C2;
-  border-radius: 14px;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
-}
-
-.victory-modal h2,
-.victory-modal h3,
-.victory-modal p,
-.victory-modal span {
-  color: #29251F;
-}
-
-
-.victory-overlay {
-  position: static !important;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  padding: 24px 16px;
-  margin: 0 auto;
-  background: transparent !important;
-}
-
-.victory-modal,
-.share-card {
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
 .share-card {
   padding: 22px;
-  background: #F5F0E6;
-  color: #29251F;
-  border: 1px solid #DDD3C2;
+  color: #29251f;
+  background: #f5f0e6;
+  border: 1px solid #ddd3c2;
   border-radius: 14px;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
   text-align: center;
@@ -1189,30 +704,32 @@ header.header h1.cloverdle-title {
 
 .share-card h3 {
   margin: 0 0 8px;
-  color: #29251F;
+  color: #29251f;
 }
 
 .share-description {
   margin: 0 0 16px;
+  color: #29251f;
   font-size: 14px;
 }
 
 .share-result {
-  margin: 0 auto 16px;
   width: fit-content;
   max-width: 100%;
+  margin: 0 auto 16px;
   box-sizing: border-box;
   text-align: center;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  color: #29251f;
 }
 
 .share-button {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
-  background: #29251F;
-  color: #F5F0E6;
+  color: #f5f0e6;
+  background: #29251f;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
@@ -1222,10 +739,84 @@ header.header h1.cloverdle-title {
   opacity: 0.85;
 }
 
+/* =========================================
+   FOOTER
+========================================= */
 
-/* =====================================
-   ADAPTACIÓN PARA CELULARES - CLOVERDLE
-   ===================================== */
+footer {
+  padding: 28px 0 8px;
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cellReveal {
+  0% {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+@keyframes cloverGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 14px rgba(40, 209, 124, 0.25);
+  }
+
+  50% {
+    text-shadow: 0 0 32px rgba(40, 209, 124, 0.65);
+  }
+}
+
+@keyframes winPop {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================
+   ADAPTACIÓN PARA TABLETS Y CELULARES
+========================================= */
 
 @media (max-width: 700px) {
 
@@ -1237,8 +828,9 @@ header.header h1.cloverdle-title {
 
   .page {
     width: 100%;
+    max-width: 100%;
     min-height: 100vh;
-    padding: 24px 12px 20px;
+    padding: 8px 8px 10px;
     overflow: visible;
   }
 
@@ -1246,677 +838,17 @@ header.header h1.cloverdle-title {
 
   .header {
     width: 100%;
-    margin: 0 auto 24px;
+    margin: 0 auto 10px;
+    padding: 0;
   }
 
   header.header h1.cloverdle-title {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 12px 0 18px !important;
-    font-size: clamp(48px, 13vw, 76px) !important;
-    line-height: 1.1 !important;
-    letter-spacing: 0 !important;
-  }
-
-  .header > p:not(.daily-countdown) {
-    max-width: 320px;
-    margin: 12px auto;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
-  .header-info {
     width: 100%;
     max-width: 100%;
-    margin: 14px auto;
-    padding: 14px 12px;
-    gap: 10px;
-  }
-
-  .header-info p {
-    font-size: 14px;
-  }
-
-  .header .mode,
-  .header-info .mode {
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
-  /* Panel principal */
-
-  .game {
-    width: 100%;
-    max-width: 100%;
-    padding: 18px 12px;
-    border-radius: 14px;
-  }
-
-  .game h2 {
-    font-size: 19px;
-    line-height: 1.4;
-  }
-
-  .instructions {
-    margin-bottom: 18px;
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  /* Buscador */
-
-  .search {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .search input {
-    width: 100%;
-    height: 50px;
-    padding: 0 13px;
-    font-size: 14px;
-  }
-
-  /* Sugerencias */
-
-  .suggestions {
-    max-height: 240px;
-    width: 100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .suggestions .suggestion {
-    min-height: 66px;
-    padding: 7px 9px;
-    grid-template-columns: 52px minmax(0, 1fr) !important;
-    column-gap: 10px !important;
-    font-size: 13px;
-  }
-
-  .suggestions .suggestion-portrait {
-    width: 52px !important;
-    height: 52px !important;
-  }
-
-  /* Leyenda de colores */
-
-  .legend {
-    gap: 9px 13px;
-    margin-bottom: 14px;
-    font-size: 10px;
-  }
-
-  .legend span {
-    gap: 5px;
-  }
-
-  /* Tabla de resultados */
-
-  .results {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-
-  .result-row {
-    width: max-content;
-    min-width: 800px;
-    grid-template-columns: 100px repeat(6, 105px);
-    gap: 6px;
-    margin-bottom: 7px;
-  }
-
-  .result-row > div {
-    min-height: 55px;
-    padding: 7px;
-    font-size: 10px;
-    line-height: 1.4;
-    border-radius: 7px;
-  }
-
-  .result-row.labels > div {
-    min-height: 40px;
-    padding: 5px;
-    font-size: 9px;
+    margin: 5px 0 8px;
+    font-size: clamp(48px, 13vw, 66px);
+    line-height: 1;
     letter-spacing: 0;
-  }
-
-  .result-row .character-cell {
-    width: 100px;
-    min-width: 100px;
-    height: 100px;
-    min-height: 100px;
-  }
-
-  .character-image {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Contador diario */
-
-  .daily-countdown {
-    width: fit-content;
-    max-width: 100%;
-    min-width: 0;
-    margin: 16px auto;
-    padding: 12px 18px;
-    font-size: 12px;
-  }
-
-  .daily-countdown strong {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-  }
-
-  /* Intentos y reinicio */
-
-  .attempts {
-    font-size: 11px;
-    line-height: 1.5;
-  }
-
-  .restart {
-    width: 100%;
-    min-height: 46px;
-    padding: 12px;
-  }
-
-  /* Ventanas de victoria y resultados compartidos */
-
-  .victory-overlay {
-    width: 100%;
-    padding: 16px 10px;
-    gap: 14px;
-  }
-
-  .victory-modal,
-  .share-card {
-    width: 100%;
-    max-width: 100%;
-    padding: 22px 16px;
-  }
-
-  .victory-modal h2 {
-    font-size: 18px;
-  }
-
-  .victory-label {
-    font-size: 1.25rem;
-  }
-
-  .victory-countdown strong {
-    font-size: 1.5rem;
-  }
-
-  .victory-button,
-  .share-button {
-    min-height: 46px;
-  }
-
-  .share-result {
-    font-size: 12px;
-  }
-
-  footer {
-    padding: 22px 0 8px;
-    font-size: 10px;
-  }
-}
-
-/* Celulares pequeños */
-
-@media (max-width: 380px) {
-
-  .page {
-    padding-right: 9px;
-    padding-left: 9px;
-  }
-
-  header.header h1.cloverdle-title {
-    font-size: 46px !important;
-  }
-
-  .game {
-    padding: 15px 9px;
-  }
-
-  .legend {
-    gap: 8px;
-    font-size: 9px;
-  }
-
-  .result-row {
-    grid-template-columns: 90px repeat(6, 100px);
-    min-width: 750px;
-  }
-
-  .result-row .character-cell {
-    width: 90px;
-    min-width: 90px;
-  }
-}
-
-/* =====================================
-   TABLA MÓVIL: PRIMERA COLUMNA FIJA
-   ===================================== */
-
-@media (max-width: 700px) {
-
-  .results {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .result-row > div:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    background-clip: padding-box;
-  }
-
-  .result-row.labels > div:first-child {
-    background: #F5F0E6;
-    z-index: 3;
-  }
-
-  .result-row:not(.labels) > .name-cell {
-    background: #18221b;
-  }
-
-  .result-row:not(.labels) > .character-cell {
-    background: #18221b;
-  }
-
-}
-
-/* Evitar el desplazamiento elástico y los bordes negros */
-html,
-body,
-#root {
-  min-height: 100%;
-  overscroll-behavior: none;
-}
-
-html,
-body {
-  background-color: #F5F0E6;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* CORRECCIÓN DEFINITIVA DE DESBORDAMIENTO */
-html {
-  width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  overflow-x: clip;
-  overscroll-behavior: none;
-  background-color: #F5F0E6;
-}
-
-body {
-  width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  overflow-x: clip;
-  overscroll-behavior: none;
-  background-color: #F5F0E6;
-}
-
-#root {
-  width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  overflow-x: clip;
-  background-color: transparent;
-}
-
-.page {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-
-/* BUSCADOR OPTIMIZADO PARA PANTALLAS TÁCTILES */
-@media (max-width: 700px) {
-  .search input {
-    min-height: 54px;
-    font-size: 16px;
-    border-radius: 10px;
-    padding: 0 15px;
-    touch-action: manipulation;
-  }
-
-  .suggestions {
-    max-height: 280px;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .suggestions .suggestion {
-    min-height: 72px;
-    padding: 9px 12px;
-    grid-template-columns: 58px minmax(0, 1fr) !important;
-    column-gap: 12px !important;
-    font-size: 14px;
-    touch-action: manipulation;
-  }
-
-  .suggestions .suggestion-portrait {
-    width: 58px !important;
-    height: 58px !important;
-  }
-}
-
-/* LETRA MÁS GRANDE EN LAS PISTAS - MÓVIL */
-@media (max-width: 700px) {
-  .result-row:not(.labels) > div {
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  .result-row.labels > div {
-    font-size: 10px;
-  }
-}
-
-/* ESPACIADO MÁS COMPACTO EN MÓVILES */
-@media (max-width: 700px) {
-  .page {
-    padding-top: 14px;
-    padding-bottom: 12px;
-  }
-
-  .header {
-    margin-bottom: 16px;
-  }
-
-  header.header h1.cloverdle-title {
-    margin: 8px 0 12px !important;
-  }
-
-  .header-info {
-    margin: 10px auto;
-    padding: 10px;
-  }
-
-  .game {
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-
-  .game h2 {
-    margin-top: 4px;
-    margin-bottom: 8px;
-  }
-
-  .instructions {
-    margin-top: 6px;
-    margin-bottom: 12px;
-  }
-
-  .search {
-    margin-bottom: 14px;
-  }
-
-  .legend {
-    margin-bottom: 10px;
-  }
-
-  .results {
-    padding-bottom: 8px;
-  }
-
-  .result-row {
-    margin-bottom: 5px;
-  }
-
-  .daily-countdown {
-    margin: 10px auto;
-  }
-
-  footer {
-    padding-top: 14px;
-  }
-}
-
-/* TÍTULO CLOVERDLE MÁS GRANDE EN MÓVILES */
-@media (max-width: 700px) {
-  header.header h1.cloverdle-title {
-    font-size: clamp(56px, 15vw, 86px) !important;
-    line-height: 1.05 !important;
-  }
-}
-
-@media (max-width: 380px) {
-  header.header h1.cloverdle-title {
-    font-size: 54px !important;
-  }
-}
-
-/* BOTONES Y CONTADOR OPTIMIZADOS PARA MÓVILES */
-@media (max-width: 700px) {
-  .restart,
-  .victory-button,
-  .share-button {
-    min-height: 50px;
-    padding: 13px 18px;
-    font-size: 14px;
-    border-radius: 10px;
-    touch-action: manipulation;
-  }
-
-  .daily-countdown {
-    padding: 14px 20px;
-    border-radius: 12px;
-  }
-
-  .daily-countdown strong {
-    font-size: 1.7rem;
-  }
-
-  .attempts {
-    font-size: 12px;
-  }
-}
-
-/* TARJETA DE VICTORIA MÁS COMPACTA EN MÓVILES */
-@media (max-width: 700px) {
-  .victory-overlay {
-    padding: 8px 10px;
-    gap: 8px;
-    min-height: 0;
-  }
-
-  .victory-modal,
-  .share-card {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
-    max-height: calc(100dvh - 24px);
-    padding: 15px 14px;
-    overflow-y: auto;
-  }
-
-  .victory-modal h2 {
-    font-size: 17px;
-    margin-top: 5px;
-    margin-bottom: 8px;
-  }
-
-  .victory-label {
-    font-size: 1.1rem;
-    margin: 8px 0;
-  }
-
-  .victory-countdown {
-    margin: 8px 0;
-  }
-
-  .victory-countdown strong {
-    font-size: 1.35rem;
-  }
-
-  .share-result {
-    font-size: 11px;
-    line-height: 1.35;
-  }
-
-  .victory-button,
-  .share-button {
-    min-height: 42px;
-    padding: 9px 14px;
-    font-size: 13px;
-    margin-top: 8px;
-  }
-}
-
-/* IGUALAR COLOR DEL CONTADOR EN LA TARJETA DE VICTORIA */
-.victory-overlay .victory-countdown {
-  color: #a3e635 !important;
-}
-
-.victory-overlay .victory-countdown strong {
-  color: #a3e635 !important;
-}
-/* COLOR DEL TEXTO DEL CONTADOR EN LA TARJETA DE VICTORIA */
-.victory-overlay .victory-countdown,
-.victory-overlay .victory-countdown p,
-.victory-overlay .victory-countdown span {
-  color: #e5e7eb !important;
-}
-
-/* Mantener los números en verde */
-.victory-overlay .victory-countdown strong {
-  color: #a3e635 !important;
-}
-
-/* =====================================
-   REPARACIÓN DE FLECHAS - CLOVERDLE
-===================================== */
-
-.arc-cell {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-}
-
-.arc-cell .arc-arrow {
-  display: block !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  width: 60px !important;
-  height: 80px !important;
-  margin: 0 !important;
-  transform: translate(-50%, -50%) !important;
-  opacity: 0.28 !important;
-  visibility: visible !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-}
-
-.arc-cell .arc-arrow path {
-  fill: #29251F !important;
-  stroke: #29251F !important;
-}
-
-.arc-cell .cell-text {
-  position: relative !important;
-  z-index: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* =====================================
-   REPARACIÓN FINAL DE FLECHAS CLOVERDLE
-===================================== */
-
-/* La celda crea su propio contexto de capas */
-.results .result-row:not(.labels) .arc-cell {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  isolation: isolate !important;
-}
-
-/* Flecha SVG negra detrás del texto */
-.results .result-row:not(.labels) .arc-cell svg.arc-arrow {
-  display: block !important;
-  position: absolute !important;
-  inset: auto !important;
-  top: 50% !important;
-  left: 50% !important;
-  width: 60px !important;
-  height: 80px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transform: translate(-50%, -50%) !important;
-  opacity: 0.28 !important;
-  visibility: visible !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-  overflow: visible !important;
-  flex-shrink: 0 !important;
-}
-
-.results .result-row:not(.labels) .arc-cell svg.arc-arrow path {
-  fill: #000000 !important;
-  stroke: #000000 !important;
-}
-
-/* Texto siempre por encima de la flecha */
-.results .result-row:not(.labels) .arc-cell .cell-text {
-  position: relative !important;
-  z-index: 2 !important;
-  display: block !important;
-  color: #ffffff !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* =========================================
-   CLOVERDLE MOBILE COMPACT - VERSION 1
-   Optimización exclusiva para celulares
-========================================= */
-
-@media (max-width: 700px) {
-
-  /* PANTALLA GENERAL */
-
-  .page {
-    padding: 8px 8px 10px !important;
-    min-height: 100vh;
-  }
-
-  /* ENCABEZADO */
-
-  .header {
-    margin: 0 auto 10px !important;
-    padding: 0 !important;
-  }
-
-  header.header h1.cloverdle-title {
-    font-size: clamp(48px, 13vw, 66px) !important;
-    line-height: 1 !important;
-    margin: 5px 0 8px !important;
   }
 
   .cloverdle-back {
@@ -1927,7 +859,14 @@ body {
     border-radius: 7px;
   }
 
-  /* CONTADOR */
+  .header > p:not(.daily-countdown) {
+    max-width: 320px;
+    margin: 12px auto;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Contador */
 
   .daily-countdown {
     display: flex;
@@ -1935,83 +874,97 @@ body {
     align-items: center;
     justify-content: center;
     gap: 9px;
-    min-width: 0;
     width: fit-content;
-    margin: 8px auto 12px !important;
-    padding: 8px 13px !important;
-    font-size: 11px !important;
+    max-width: 100%;
+    min-width: 0;
+    margin: 8px auto 12px;
+    padding: 8px 13px;
+    left: auto;
+    transform: none;
+    font-size: 11px;
     border-radius: 9px;
   }
 
   .daily-countdown strong {
-    font-size: 1.2rem !important;
-    letter-spacing: 1px !important;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
   }
 
-  /* PANEL DEL JUEGO */
+  /* Panel */
 
   .game {
-    padding: 12px 9px !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 9px;
     border-radius: 11px;
   }
 
   .game h2 {
-    margin: 0 0 5px !important;
-    font-size: 17px !important;
+    margin: 0 0 5px;
+    font-size: 17px;
     line-height: 1.3;
   }
 
   .instructions {
-    margin: 4px 0 10px !important;
-    font-size: 11px !important;
-    line-height: 1.4 !important;
+    margin: 4px 0 10px;
+    font-size: 11px;
+    line-height: 1.4;
   }
 
-  /* BUSCADOR */
+  /* Buscador */
 
   .search {
-    margin: 0 0 10px !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 10px;
   }
 
   .search input {
-    height: 46px !important;
-    min-height: 46px !important;
-    padding: 0 11px !important;
-    font-size: 16px !important;
+    width: 100%;
+    height: 46px;
+    min-height: 46px;
+    padding: 0 11px;
+    font-size: 16px;
     border-radius: 8px;
+    touch-action: manipulation;
   }
 
-  /* SUGERENCIAS */
+  /* Sugerencias */
 
   .suggestions {
-    max-height: 200px !important;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .suggestions .suggestion {
-    min-height: 54px !important;
-    padding: 5px 8px !important;
-    grid-template-columns: 42px minmax(0, 1fr) !important;
-    gap: 8px !important;
-    font-size: 12px !important;
+    min-height: 54px;
+    padding: 5px 8px;
+    grid-template-columns: 42px minmax(0, 1fr);
+    column-gap: 8px;
+    font-size: 12px;
+    touch-action: manipulation;
   }
 
   .suggestions .suggestion-portrait {
-    width: 42px !important;
-    height: 42px !important;
+    width: 42px;
+    height: 42px;
   }
 
-  /* LEYENDA */
+  /* Leyenda */
 
   .legend {
     display: flex;
     justify-content: center;
-    gap: 6px 12px !important;
-    margin: 0 0 8px !important;
-    font-size: 9px !important;
+    gap: 6px 12px;
+    margin: 0 0 8px;
+    font-size: 9px;
   }
 
   .legend span {
-    gap: 4px !important;
+    gap: 4px;
   }
 
   .dot {
@@ -2019,314 +972,113 @@ body {
     height: 7px;
   }
 
-  /* TABLA */
+  /* =====================================
+     TABLA MÓVIL
+  ===================================== */
 
   .results {
-    padding-bottom: 6px !important;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
-  .result-row {
-    grid-template-columns: 76px repeat(6, 88px) !important;
-    min-width: 604px !important;
-    width: max-content;
-    gap: 4px !important;
-    margin-bottom: 4px !important;
-  }
-
-  .result-row > div {
-    min-height: 48px !important;
-    padding: 5px !important;
-    font-size: 11px !important;
-    line-height: 1.3 !important;
-    border-radius: 6px;
-  }
-
-  .result-row.labels > div {
-    min-height: 35px !important;
-    padding: 3px !important;
-    font-size: 8px !important;
-    line-height: 1.2 !important;
-  }
-
-  /* IMÁGENES DE PERSONAJES */
-
-  .result-row .character-cell {
-    width: 76px !important;
-    min-width: 76px !important;
-    height: 76px !important;
-    min-height: 76px !important;
-  }
-
-  .character-image {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-  }
-
-  /* PRIMERA COLUMNA FIJA */
-
-  .result-row > div:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 3;
-  }
-
-  .result-row.labels > div:first-child {
-    z-index: 4;
-    background: #F5F0E6;
-  }
-
-  .result-row:not(.labels) > .name-cell {
-    background: #18221b !important;
-  }
-
-  /* FLECHAS DE LOS ARCOS */
-
-  .arc-cell .arc-arrow {
-    width: 48px !important;
-    height: 62px !important;
-  }
-
-  /* INTENTOS */
-
-  .attempts {
-    margin: 10px 0 0 !important;
-    font-size: 11px !important;
-  }
-
-  /* VICTORIA */
-
-  .victory-overlay {
-    padding: 10px 5px !important;
-    gap: 8px !important;
-  }
-
-  .victory-modal,
-  .share-card {
-    padding: 14px 12px !important;
-    border-radius: 10px;
-  }
-
-  .victory-portrait {
-    width: 100px !important;
-    height: 100px !important;
-    margin: 8px auto !important;
-  }
-
-  .victory-label {
-    font-size: 1rem !important;
-    margin: 5px 0 !important;
-  }
-
-  .victory-modal h2 {
-    font-size: 16px !important;
-    margin-bottom: 8px !important;
-  }
-
-  .victory-name {
-    font-size: 1.2rem !important;
-    margin: 5px 0 !important;
-  }
-
-  .victory-countdown {
-    padding: 9px !important;
-    margin: 8px 0 !important;
-  }
-
-  .victory-countdown strong {
-    font-size: 1.3rem !important;
-  }
-
-  .victory-button,
-  .share-button {
-    min-height: 40px !important;
-    padding: 9px 12px !important;
-    font-size: 12px !important;
-  }
-
-  /* FOOTER */
-
-  footer {
-    padding: 10px 0 5px !important;
-    font-size: 9px !important;
-  }
-}
-
-/* CELULARES PEQUEÑOS */
-
-@media (max-width: 380px) {
-
-  .page {
-    padding-right: 6px !important;
-    padding-left: 6px !important;
-  }
-
-  header.header h1.cloverdle-title {
-    font-size: 46px !important;
-  }
-
-  .game {
-    padding: 10px 7px !important;
-  }
-
-  .result-row {
-    grid-template-columns: 70px repeat(6, 84px) !important;
-    min-width: 574px !important;
-  }
-
-  .result-row .character-cell {
-    width: 70px !important;
-    min-width: 70px !important;
-    height: 70px !important;
-    min-height: 70px !important;
-  }
-}
-
-/* =====================================
-   CLOVERDLE - CELDAS COMPACTAS EN MÓVIL
-===================================== */
-
-@media (max-width: 700px) {
-  .results {
-    gap: 5px !important;
-  }
-
-  .labels {
-    grid-template-columns: 76px repeat(6, 76px) !important;
-    min-width: 532px !important;
-    gap: 3px !important;
-  }
-
-  .result-row {
-    grid-template-columns: 76px repeat(6, 76px) !important;
-    min-width: 532px !important;
-    gap: 3px !important;
-  }
-
-  .character-cell {
-    width: 76px !important;
-    min-width: 76px !important;
-    height: 76px !important;
-  }
-
-  .character-image {
-    width: 64px !important;
-    height: 64px !important;
-  }
-
-  .cell {
-    height: 40px !important;
-    min-height: 40px !important;
-    padding: 3px !important;
-    font-size: 10px !important;
-    line-height: 1.1 !important;
-  }
-
-  .cell-text {
-    font-size: 10px !important;
-  }
-
-  .arc-cell {
-    height: 40px !important;
-    min-height: 40px !important;
-  }
-
-  .arc-arrow {
-    font-size: 10px !important;
-  }
-}
-
-@media (max-width: 380px) {
-  .labels,
-  .result-row {
-    grid-template-columns: 70px repeat(6, 70px) !important;
-    min-width: 490px !important;
-  }
-
-  .character-cell {
-    width: 70px !important;
-    min-width: 70px !important;
-    height: 70px !important;
-  }
-
-  .character-image {
-    width: 58px !important;
-    height: 58px !important;
-  }
-
-  .cell {
-    height: 36px !important;
-    min-height: 36px !important;
-    font-size: 9px !important;
-  }
-}
-
-/* ==========================================
-   CLOVERDLE - AJUSTE DEFINITIVO DE TABLA MÓVIL
-========================================== */
-
-@media (max-width: 700px) {
-
-  /* Columnas más angostas */
   .results .result-row {
-    display: grid !important;
-    grid-template-columns: 64px repeat(6, 68px) !important;
-    width: max-content !important;
-    min-width: 0 !important;
-    gap: 3px !important;
-    margin-bottom: 4px !important;
-  }
-
-  /* Encabezados */
-  .results .result-row.labels > div {
-    min-height: 34px !important;
-    padding: 2px !important;
-    font-size: 8px !important;
+    display: grid;
+    grid-template-columns: 64px repeat(6, 68px);
+    width: max-content;
+    min-width: 0;
+    gap: 3px;
+    margin-bottom: 4px;
   }
 
   /* Celdas de atributos */
+
   .results .result-row:not(.labels) > div:not(.character-cell) {
-    min-height: 42px !important;
-    height: 42px !important;
-    padding: 3px !important;
-    font-size: 10px !important;
-    line-height: 1.15 !important;
-    border-radius: 5px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    min-width: 68px;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 9px;
+    line-height: 1.1;
+    text-align: center;
+    overflow-wrap: anywhere;
   }
 
-  /* Casilla de la foto */
+  .results .result-row:not(.labels) > div:not(.character-cell) .cell-text {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  /* Encabezados */
+
+  .results .result-row.labels > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    min-width: 68px;
+    height: auto;
+    min-height: 34px;
+    padding: 2px;
+    font-size: 7px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .results .result-row.labels > div:first-child {
+    width: 64px;
+    min-width: 64px;
+  }
+
+  /* Foto: exactamente 42 px de alto */
+
   .results .result-row .character-cell {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 64px !important;
-    min-width: 64px !important;
-    height: 82px !important;
-    min-height: 82px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    min-width: 64px;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    border-radius: 5px;
+    background: #18221b;
   }
 
-  /* Foto rectangular y más pequeña */
   .results .result-row .character-cell .character-image {
-    display: block !important;
-    width: 56px !important;
-    min-width: 56px !important;
-    height: 76px !important;
-    min-height: 76px !important;
-    max-width: 56px !important;
-    max-height: 76px !important;
-    object-fit: cover !important;
-    object-position: top center !important;
-    border-radius: 5px !important;
-    margin: 0 auto !important;
+    display: block;
+    width: 34px;
+    min-width: 34px;
+    max-width: 34px;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    object-fit: cover;
+    object-position: top center;
   }
 
   /* Primera columna fija */
+
   .results .result-row > div:first-child {
     position: sticky;
     left: 0;
@@ -2335,127 +1087,216 @@ body {
 
   .results .result-row.labels > div:first-child {
     z-index: 4;
-    background: #F5F0E6 !important;
+    background: #f5f0e6;
+  }
+
+  .results .result-row:not(.labels) > .character-cell {
+    background: #18221b;
+  }
+
+  /* Flechas SVG */
+
+  .results .result-row:not(.labels) .arc-cell svg.arc-arrow {
+    width: 20px;
+    height: 26px;
+    opacity: 0.28;
+  }
+
+  /* Intentos */
+
+  .attempts {
+    margin: 10px 0 0;
+    font-size: 11px;
+  }
+
+  /* Victoria */
+
+  .victory-overlay {
+    padding: 10px 5px;
+    gap: 8px;
+  }
+
+  .victory-modal,
+  .share-card {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - 24px);
+    padding: 14px 12px;
+    overflow-y: auto;
+    border-radius: 10px;
+  }
+
+  .victory-portrait {
+    width: 100px;
+    height: 100px;
+    margin: 8px auto;
+  }
+
+  .victory-label {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+
+  .victory-modal h2 {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .victory-name {
+    margin: 5px 0;
+    font-size: 1.2rem;
+  }
+
+  .victory-countdown {
+    padding: 9px;
+    margin: 8px 0;
+  }
+
+  .victory-countdown strong {
+    font-size: 1.3rem;
+  }
+
+  .victory-button,
+  .share-button {
+    min-height: 40px;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .share-result {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* Footer */
+
+  footer {
+    padding: 10px 0 5px;
+    font-size: 9px;
   }
 }
 
-/* CELULARES DE MENOS DE 380 PX */
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+========================================= */
 
 @media (max-width: 380px) {
+
+  .page {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  header.header h1.cloverdle-title {
+    font-size: 46px;
+  }
+
+  .game {
+    padding: 10px 7px;
+  }
+
+  .legend {
+    gap: 6px;
+    font-size: 8px;
+  }
+
+  /* Columnas más estrechas */
 
   .results .result-row {
-    grid-template-columns: 58px repeat(6, 62px) !important;
-    gap: 3px !important;
-  }
-
-  .results .result-row .character-cell {
-    width: 58px !important;
-    min-width: 58px !important;
-    height: 74px !important;
-    min-height: 74px !important;
-  }
-
-  .results .result-row .character-cell .character-image {
-    width: 50px !important;
-    min-width: 50px !important;
-    height: 68px !important;
-    min-height: 68px !important;
-    max-width: 50px !important;
-    max-height: 68px !important;
-  }
-}
-/* ==========================================
-   FOTO DEL PERSONAJE: MISMO ALTO QUE LAS CELDAS
-========================================== */
-
-@media (max-width: 700px) {
-
-  .results .result-row .character-cell {
-    height: 42px !important;
-    min-height: 42px !important;
-    max-height: 42px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-  }
-
-  .results .result-row .character-cell .character-image {
-    width: 34px !important;
-    min-width: 34px !important;
-    max-width: 34px !important;
-    height: 42px !important;
-    min-height: 42px !important;
-    max-height: 42px !important;
-    object-fit: cover !important;
-    object-position: top center !important;
-    margin: 0 auto !important;
-    border-radius: 4px !important;
-  }
-}/* ==========================================
-   CLOVERDLE - LETRA MÁS PEQUEÑA EN MÓVIL
-========================================== */
-
-@media (max-width: 700px) {
-
-  /* Texto de las celdas */
-  .results .result-row:not(.labels) > div:not(.character-cell) {
-    font-size: 9px !important;
-    line-height: 1.1 !important;
-    padding: 2px !important;
-  }
-
-  /* Encabezados de las columnas */
-  .results .result-row.labels > div {
-    font-size: 7px !important;
-    line-height: 1.1 !important;
-    padding: 2px !important;
-  }
-
-  /* Flechas de los arcos */
-  .results .arc-arrow {
-    font-size: 9px !important;
-  }
-}
-
-/* Pantallas muy pequeñas */
-@media (max-width: 380px) {
-
-  .results .result-row:not(.labels) > div:not(.character-cell) {
-    font-size: 8px !important;
+    grid-template-columns: 58px repeat(6, 62px);
+    gap: 3px;
   }
 
   .results .result-row.labels > div {
-    font-size: 6px !important;
+    width: 62px;
+    min-width: 62px;
+    font-size: 6px;
   }
-}/* ==========================================
-   FLECHAS DE LOS ARCOS MÁS PEQUEÑAS
-========================================== */
 
-@media (max-width: 700px) {
-  .results .arc-arrow {
-    font-size: 7px !important;
-    margin: 0 1px !important;
-    line-height: 1 !important;
+  .results .result-row.labels > div:first-child {
+    width: 58px;
+    min-width: 58px;
   }
+
+  .results .result-row:not(.labels) > div:not(.character-cell) {
+    width: 62px;
+    min-width: 62px;
+    font-size: 8px;
+  }
+
+  .results .result-row:not(.labels) > div:not(.character-cell) .cell-text {
+    font-size: 8px;
+  }
+
+  .results .result-row .character-cell {
+    width: 58px;
+    min-width: 58px;
+  }
+
+  .results .result-row .character-cell .character-image {
+    width: 34px;
+    min-width: 34px;
+    max-width: 34px;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+  }
+
+  .results .result-row:not(.labels) .arc-cell svg.arc-arrow {
+    width: 16px;
+    height: 20px;
+  }
+}
+
+/* =========================================
+   ACCESIBILIDAD
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* IMAGEN DEL PERSONAJE: OCUPA TODA LA CELDA */
+.results .character-cell {
+  width: 64px;
+  min-width: 64px;
+  max-width: 64px;
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  padding: 0 !important;
+  margin: 0;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  display: block;
+}
+
+.results .character-cell .character-image {
+  display: block;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center top;
 }
 
 @media (max-width: 380px) {
-  .results .arc-arrow {
-    font-size: 6px !important;
-  }
-}
-@media (max-width: 700px) {
-  .results .arc-arrow {
-    font-size: 5px !important;
-    margin: 0 !important;
-    line-height: 1 !important;
-  }
-}
-
-@media (max-width: 380px) {
-  .results .arc-arrow {
-    font-size: 4px !important;
+  .results .character-cell {
+    width: 58px;
+    min-width: 58px;
+    max-width: 58px;
   }
 }
