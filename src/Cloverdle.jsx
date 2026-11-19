@@ -84,7 +84,6 @@ function registerDailyWin(day) {
     const saved = localStorage.getItem(STREAK_KEY);
     const record = saved ? JSON.parse(saved) : null;
 
-    // Evita sumar dos veces la victoria del mismo día.
     if (record?.lastWonDay === day) {
       return record.currentStreak || 0;
     }
@@ -325,11 +324,14 @@ export default function Cloverdle({ onBack }) {
     .join('\n');
 
   const shareText =
-    `He encontrado #Cloverdle #${puzzleNumber} ` +
-    `en modo clásico en ${guesses.length} ` +
-    `${guesses.length === 1 ? 'intento' : 'intentos'} 🍀\n` +
+    `🍀 AnimeDle | Cloverdle\n` +
+    `Desafío diario de Black Clover #${puzzleNumber}\n\n` +
+    `Lo resolví en ${guesses.length} ` +
+    `${guesses.length === 1 ? 'intento' : 'intentos'}:\n` +
     shareRows +
-    `\n\nhttps://animedle-green.vercel.app/`;
+    `\n\n¿Podés superar mi resultado?\n` +
+    `Jugá gratis en AnimeDle:\n` +
+    `https://animedle-green.vercel.app/`;
 
   useEffect(() => {
     if (won) {

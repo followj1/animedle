@@ -102,7 +102,6 @@ function registerDailyWin(day) {
     const saved = localStorage.getItem(STREAK_KEY);
     const record = saved ? JSON.parse(saved) : null;
 
-    // Evita sumar dos veces la victoria del mismo día.
     if (record?.lastWonDay === day) {
       return record.currentStreak || 0;
     }
@@ -357,11 +356,14 @@ export default function NarutoDle({ onBack }) {
     : '';
 
   const shareText =
-    `He encontrado #NarutoDle #${puzzleNumber} ` +
-    `en modo clásico en ${guesses.length} ` +
-    `${guesses.length === 1 ? 'intento' : 'intentos'} 🍥\n` +
+    `🍥 AnimeDle | NarutoDle\n` +
+    `Desafío diario de Naruto #${puzzleNumber}\n\n` +
+    `Lo resolví en ${guesses.length} ` +
+    `${guesses.length === 1 ? 'intento' : 'intentos'}:\n` +
     shareRows +
-    `\n\nhttps://animedle-green.vercel.app/`;
+    `\n\n¿Podés superar mi resultado?\n` +
+    `Jugá gratis en AnimeDle:\n` +
+    `https://animedle-green.vercel.app/`;
 
   useEffect(() => {
     if (won) {

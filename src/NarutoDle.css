@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Ninja Naruto';
   src: url('./fonts/NinjaNaruto-YOn4.ttf') format('truetype');
@@ -7,9 +6,7 @@
   font-display: swap;
 }
 
-/* =====================================
-   NARUTODLE - DISEÑO GENERAL
-===================================== */
+/* DISEÑO GENERAL */
 
 .narutodle {
   --naruto-orange: #e87535;
@@ -19,7 +16,6 @@
   --naruto-text: #29394b;
   --naruto-muted: #788697;
   --naruto-border: #e5eaf0;
-
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
@@ -30,9 +26,7 @@
   font-family: 'Inter', sans-serif;
 }
 
-.narutodle *,
-.narutodle *::before,
-.narutodle *::after {
+.narutodle *, .narutodle *::before, .narutodle *::after {
   box-sizing: border-box;
 }
 
@@ -56,13 +50,13 @@
   padding: 10px 16px;
   border: 1px solid var(--naruto-border);
   border-radius: 10px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,.9);
   color: var(--naruto-blue);
   font-weight: 700;
   font-size: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 3px 10px rgba(38, 63, 88, 0.04);
+  transition: all .2s ease;
+  box-shadow: 0 3px 10px rgba(38,63,88,.04);
 }
 
 .narutodle .cloverdle-back:hover {
@@ -70,14 +64,14 @@
   border-color: #e9a17c;
   color: var(--naruto-orange-dark);
   transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(38, 63, 88, 0.09);
+  box-shadow: 0 5px 14px rgba(38,63,88,.09);
 }
 
 /* LOGO */
 
 .narutodle .narutodle-title {
   display: block;
-  width: min(100%, 650px);
+  width: min(100%,650px);
   aspect-ratio: 4 / 1;
   height: auto;
   margin: 12px auto 8px;
@@ -93,7 +87,7 @@
   overflow: hidden;
 }
 
-/* INFORMACIÓN DEL ENCABEZADO */
+/* INFORMACIÓN */
 
 .narutodle .header-info p {
   margin: 5px 0 14px;
@@ -122,7 +116,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--naruto-orange);
-  box-shadow: 0 0 0 3px rgba(232, 117, 53, 0.12);
+  box-shadow: 0 0 0 3px rgba(232,117,53,.12);
 }
 
 .narutodle .daily-countdown {
@@ -149,12 +143,10 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px;
-  border: 1px solid rgba(222, 229, 237, 0.9);
+  border: 1px solid rgba(222,229,237,.9);
   border-radius: 20px;
-  background: rgba(255,255,255,0.96);
-  box-shadow:
-    0 12px 35px rgba(38, 63, 88, 0.055),
-    0 2px 5px rgba(38, 63, 88, 0.025);
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 12px 35px rgba(38,63,88,.055), 0 2px 5px rgba(38,63,88,.025);
 }
 
 .narutodle .game h2 {
@@ -163,7 +155,7 @@
   text-align: center;
   font-size: 25px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -.5px;
 }
 
 .narutodle .instructions {
@@ -196,18 +188,16 @@
   color: var(--naruto-text);
   font: inherit;
   font-size: 13px;
-  box-shadow: 0 3px 10px rgba(38, 63, 88, 0.025);
-  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(38,63,88,.025);
+  transition: all .2s ease;
 }
 
-.narutodle .search input::placeholder {
-  color: #a0aab6;
-}
+.narutodle .search input::placeholder { color: #a0aab6; }
 
 .narutodle .search input:focus {
   border-color: #e99a70;
   background: white;
-  box-shadow: 0 0 0 4px rgba(232, 117, 53, 0.10);
+  box-shadow: 0 0 0 4px rgba(232,117,53,.10);
 }
 
 .narutodle .search input:disabled {
@@ -226,7 +216,7 @@
   border: 1px solid var(--naruto-border);
   border-radius: 12px;
   background: white;
-  box-shadow: 0 12px 30px rgba(30, 45, 65, 0.13);
+  box-shadow: 0 12px 30px rgba(30,45,65,.13);
 }
 
 .narutodle .suggestion {
@@ -244,12 +234,10 @@
   font: inherit;
   font-size: 13px;
   font-weight: 600;
-  transition: background 0.15s ease;
+  transition: background .15s ease;
 }
 
-.narutodle .suggestion:last-child {
-  border-bottom: none;
-}
+.narutodle .suggestion:last-child { border-bottom: none; }
 
 .narutodle .suggestion:hover {
   background: #fff5ef;
@@ -299,21 +287,11 @@
   border-radius: 3px;
 }
 
-.narutodle .dot.correct {
-  background: #66bd89;
-}
+.narutodle .dot.correct { background: #66bd89; }
+.narutodle .dot.partial { background: #eac15d; }
+.narutodle .dot.wrong { background: #df8585; }
 
-.narutodle .dot.partial {
-  background: #eac15d;
-}
-
-.narutodle .dot.wrong {
-  background: #df8585;
-}
-
-/* =====================================
-   TABLA DE RESULTADOS - ESCRITORIO
-===================================== */
+/* TABLA DE RESULTADOS - ESCRITORIO */
 
 .narutodle .results {
   display: block;
@@ -325,17 +303,14 @@
   padding: 4px 2px 14px;
   scrollbar-width: thin;
   scrollbar-color: #cbd5df #f1f4f7;
+  -webkit-overflow-scrolling: touch;
 }
 
-.narutodle .results::-webkit-scrollbar {
-  height: 8px;
-}
-
+.narutodle .results::-webkit-scrollbar { height: 8px; }
 .narutodle .results::-webkit-scrollbar-track {
   border-radius: 10px;
   background: #f1f4f7;
 }
-
 .narutodle .results::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #cbd5df;
@@ -351,38 +326,40 @@
   margin-bottom: 9px;
 }
 
+/* 8 COLUMNAS CUADRADAS: PERSONAJE + 7 ATRIBUTOS */
+
 .narutodle .result-row > div {
-  flex: 0 0 150px !important;
-  width: 150px !important;
-  min-width: 150px !important;
-  max-width: 150px !important;
+  flex: 0 0 100px !important;
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  height: 100px !important;
+  min-height: 100px !important;
+  max-height: 100px !important;
 }
 
 .narutodle .result-row > div:first-child {
-  flex-basis: 130px !important;
-  width: 130px !important;
-  min-width: 130px !important;
-  max-width: 130px !important;
+  flex-basis: 100px !important;
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
 }
 
-.narutodle .result-row.labels {
-  margin-bottom: 11px;
-}
+.narutodle .result-row.labels { margin-bottom: 11px; }
 
 .narutodle .result-row.labels > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50px;
-  padding: 9px;
+  padding: 7px;
   border: 1px solid #e8edf2;
   border-radius: 9px;
-  background: linear-gradient(180deg, #f3f6f9, #edf1f5);
+  background: linear-gradient(180deg,#f3f6f9,#edf1f5);
   color: #53677d;
   text-align: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
-  letter-spacing: 0.25px;
+  letter-spacing: .2px;
   text-transform: uppercase;
 }
 
@@ -392,26 +369,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 108px;
-  padding: 4px;
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  height: 100px !important;
+  min-height: 100px !important;
+  max-height: 100px !important;
+  padding: 0;
   border: 1px solid #e3e9ef;
   border-radius: 11px;
-  background: linear-gradient(145deg, #ffffff, #f6f8fb);
+  background: linear-gradient(145deg,#fff,#f6f8fb);
   overflow: hidden;
-  box-shadow: 0 2px 7px rgba(38, 63, 88, 0.035);
+  box-shadow: 0 2px 7px rgba(38,63,88,.035);
 }
 
 .narutodle .character-image {
   display: block;
-  flex: 0 0 100px;
-  width: 100px;
-  height: 100px;
-  max-width: 100%;
-  border: 2px solid white;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  padding: 0;
+  margin: 0;
+  border: 0;
   border-radius: 9px;
-  object-fit: cover;
+  object-fit: contain !important;
+  object-position: center;
   background: #e9edf2;
-  box-shadow: 0 2px 7px rgba(38, 63, 88, 0.12);
+  box-shadow: none;
 }
 
 /* CELDAS DE PISTAS */
@@ -421,19 +409,24 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  min-height: 108px;
-  padding: 11px 8px;
-  border: 1px solid rgba(0,0,0,0.025);
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  height: 100px !important;
+  min-height: 100px !important;
+  max-height: 100px !important;
+  padding: 7px;
+  border: 1px solid rgba(0,0,0,.025);
   border-radius: 11px;
-  color: #ffffff !important;
+  color: #fff !important;
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.3;
   overflow-wrap: anywhere;
-  box-shadow: 0 2px 6px rgba(38, 63, 88, 0.035);
-  animation: narutoReveal 0.45s ease both;
-  transition: filter 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(38,63,88,.035);
+  animation: narutoReveal .45s ease both;
+  transition: filter .2s ease, transform .2s ease;
 }
 
 .narutodle .cell:hover {
@@ -442,21 +435,21 @@
 }
 
 .narutodle .cell.correct {
-  background: linear-gradient(145deg, #45a96d, #28834e);
+  background: linear-gradient(145deg,#45a96d,#28834e);
   border-color: #267c49;
-  color: #ffffff !important;
+  color: #fff !important;
 }
 
 .narutodle .cell.partial {
-  background: linear-gradient(145deg, #d5a832, #b88919);
+  background: linear-gradient(145deg,#d5a832,#b88919);
   border-color: #a77c18;
-  color: #ffffff !important;
+  color: #fff !important;
 }
 
 .narutodle .cell.wrong {
-  background: linear-gradient(145deg, #d66b6b, #b94343);
+  background: linear-gradient(145deg,#d66b6b,#b94343);
   border-color: #a83b3b;
-  color: #ffffff !important;
+  color: #fff !important;
 }
 
 /* TEXTO DE LAS PISTAS */
@@ -466,7 +459,7 @@
 .narutodle .cell span {
   position: relative;
   z-index: 1;
-  color: #ffffff !important;
+  color: #fff !important;
 }
 
 /* FLECHAS DE ARCO */
@@ -492,7 +485,7 @@
   flex-shrink: 0;
   font-size: 3.5rem;
   font-weight: 900;
-  opacity: 0.28;
+  opacity: .28;
   z-index: 0;
   pointer-events: none;
 }
@@ -501,7 +494,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   width: 60px;
   height: 80px;
   margin: 0;
@@ -512,21 +505,14 @@
   position: relative;
   z-index: 1;
   visibility: visible;
-  color: #ffffff !important;
+  color: #fff !important;
 }
 
 /* ANIMACIÓN */
 
 @keyframes narutoReveal {
-  from {
-    opacity: 0;
-    transform: rotateX(45deg) translateY(4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: rotateX(0) translateY(0);
-  }
+  from { opacity: 0; transform: rotateX(45deg) translateY(4px); }
+  to { opacity: 1; transform: rotateX(0) translateY(0); }
 }
 
 /* INTENTOS */
@@ -544,9 +530,7 @@
   font-weight: 800;
 }
 
-/* =====================================
-   VICTORIA Y RESULTADOS
-===================================== */
+/* VICTORIA Y RESULTADOS */
 
 .narutodle .victory-overlay {
   position: static !important;
@@ -570,10 +554,10 @@
   width: 100%;
   max-width: 500px;
   padding: 30px;
-  border: 1px solid rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,.8);
   border-radius: 19px;
   background: white;
-  box-shadow: 0 18px 45px rgba(38, 63, 88, 0.12);
+  box-shadow: 0 18px 45px rgba(38,63,88,.12);
   text-align: center;
 }
 
@@ -610,7 +594,7 @@
   border: 4px solid #fff0e8;
   border-radius: 15px;
   object-fit: cover;
-  box-shadow: 0 5px 16px rgba(38, 63, 88, 0.12);
+  box-shadow: 0 5px 16px rgba(38,63,88,.12);
 }
 
 .narutodle .victory-name {
@@ -630,12 +614,12 @@
   flex-direction: column;
   gap: 6px;
   margin: 20px 0;
-  color: var(--naruto-muted);
+  color: #fff !important;
   font-size: 12px;
 }
 
 .narutodle .victory-countdown strong {
-  color: var(--naruto-orange-dark);
+  color: #fff !important;
   font-size: 23px;
 }
 
@@ -645,20 +629,20 @@
   padding: 13px 18px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ed8950, #d9632c);
+  background: linear-gradient(135deg,#ed8950,#d9632c);
   color: white;
   font-size: 13px;
   font-weight: 900;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(217, 99, 44, 0.19);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(217,99,44,.19);
+  transition: all .2s ease;
 }
 
 .narutodle .victory-button:hover,
 .narutodle .share-button:hover {
-  background: linear-gradient(135deg, #e77a3d, #c95726);
+  background: linear-gradient(135deg,#e77a3d,#c95726);
   transform: translateY(-2px);
-  box-shadow: 0 7px 16px rgba(217, 99, 44, 0.25);
+  box-shadow: 0 7px 16px rgba(217,99,44,.25);
 }
 
 .narutodle .share-card h3 {
@@ -695,12 +679,9 @@
   font-weight: 500;
 }
 
-/* =====================================
-   MÓVILES
-===================================== */
+/* MÓVILES */
 
 @media (max-width: 700px) {
-
   .narutodle {
     padding: 18px 8px 25px;
     background-attachment: scroll;
@@ -719,25 +700,18 @@
     font-size: 10px;
   }
 
-  /* LOGO */
-
   .narutodle .narutodle-title {
-    width: min(100%, 520px);
+    width: min(100%,520px);
     aspect-ratio: 4 / 1;
     margin: 8px auto 10px;
   }
-
-  /* INFORMACIÓN */
 
   .narutodle .header-info p {
     font-size: 11px;
     margin: 5px 0 10px;
   }
 
-  .narutodle .mode {
-    padding: 7px 12px;
-    font-size: 9px;
-  }
+  .narutodle .mode { padding: 7px 12px; font-size: 9px; }
 
   .narutodle .daily-countdown {
     flex-direction: row;
@@ -748,33 +722,12 @@
     font-size: 10px;
   }
 
-  .narutodle .daily-countdown strong {
-    font-size: 14px;
-  }
+  .narutodle .daily-countdown strong { font-size: 14px; }
 
-  /* CONTENEDOR */
-
-  .narutodle .game {
-    padding: 16px 9px;
-    border-radius: 14px;
-  }
-
-  .narutodle .game h2 {
-    font-size: 19px;
-    margin-bottom: 8px;
-  }
-
-  .narutodle .instructions {
-    margin-bottom: 18px;
-    font-size: 11px;
-    line-height: 1.5;
-  }
-
-  /* BUSCADOR */
-
-  .narutodle .search {
-    margin-bottom: 18px;
-  }
+  .narutodle .game { padding: 16px 9px; border-radius: 14px; }
+  .narutodle .game h2 { font-size: 19px; margin-bottom: 8px; }
+  .narutodle .instructions { margin-bottom: 18px; font-size: 11px; line-height: 1.5; }
+  .narutodle .search { margin-bottom: 18px; }
 
   .narutodle .search input {
     height: 48px;
@@ -783,10 +736,7 @@
     font-size: 16px;
   }
 
-  .narutodle .suggestions {
-    max-height: 280px;
-    border-radius: 10px;
-  }
+  .narutodle .suggestions { max-height: 280px; border-radius: 10px; }
 
   .narutodle .suggestion {
     gap: 9px;
@@ -794,29 +744,13 @@
     font-size: 12px;
   }
 
-  .narutodle .suggestion-portrait {
-    width: 42px;
-    height: 42px;
-  }
+  .narutodle .suggestion-portrait { width: 42px; height: 42px; }
 
-  /* LEYENDA */
+  .narutodle .legend { gap: 10px; margin: 17px 0; font-size: 9px; }
+  .narutodle .legend span { gap: 5px; }
+  .narutodle .dot { width: 8px; height: 8px; }
 
-  .narutodle .legend {
-    gap: 10px;
-    margin: 17px 0;
-    font-size: 9px;
-  }
-
-  .narutodle .legend span {
-    gap: 5px;
-  }
-
-  .narutodle .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  /* TABLA: 1 PERSONAJE + 7 ATRIBUTOS */
+  /* TABLA CUADRADA: 1 PERSONAJE + 7 ATRIBUTOS */
 
   .narutodle .results {
     display: block;
@@ -834,7 +768,7 @@
 
   .narutodle .result-row {
     display: grid !important;
-    grid-template-columns: 64px repeat(7, 68px);
+    grid-template-columns: repeat(8,48px);
     align-items: stretch;
     gap: 3px;
     width: max-content !important;
@@ -842,42 +776,33 @@
     margin-bottom: 6px;
   }
 
-  .narutodle .result-row > div {
-    flex: initial !important;
-    width: 68px !important;
-    min-width: 68px !important;
-    max-width: 68px !important;
-    min-height: 42px;
-    height: auto;
-    padding: 3px;
+  .narutodle .result-row > div,
+  .narutodle .result-row > div:first-child,
+  .narutodle .name-cell,
+  .narutodle .cell {
+    flex: none !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    padding: 2px;
     border-radius: 5px;
-    font-size: 9px;
-    line-height: 1.15;
+    font-size: 7px;
+    line-height: 1.1;
     overflow-wrap: anywhere;
   }
 
-  .narutodle .result-row > div:first-child {
-    width: 64px !important;
-    min-width: 64px !important;
-    max-width: 64px !important;
-    flex: initial !important;
-  }
-
-  /* ENCABEZADOS */
-
-  .narutodle .result-row.labels {
-    margin-bottom: 7px;
-  }
+  .narutodle .result-row.labels { margin-bottom: 7px; }
 
   .narutodle .result-row.labels > div {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 34px;
-    height: auto;
-    padding: 3px 2px;
+    padding: 2px;
     border-radius: 5px;
-    font-size: 7px;
+    font-size: 6px;
     line-height: 1.1;
     letter-spacing: 0;
   }
@@ -895,22 +820,18 @@
     background: #edf1f5;
   }
 
-  /* CELDA DE FOTO */
+  /* FOTO CUADRADA SIN RECORTE */
 
   .narutodle .name-cell {
-    display: block;
-    width: 64px !important;
-    min-width: 64px !important;
-    max-width: 64px !important;
-    height: 42px;
-    min-height: 42px;
-    max-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0 !important;
     margin: 0;
     overflow: hidden;
     border: none;
     border-radius: 5px;
-    background: transparent;
+    background: #f1f3f6;
     box-shadow: none;
   }
 
@@ -919,65 +840,49 @@
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
-    height: 42px !important;
-    min-height: 42px !important;
-    max-height: 42px !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
     padding: 0;
     margin: 0;
     border: none;
     border-radius: 5px;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain !important;
+    object-position: center;
     background: transparent;
     box-shadow: none;
   }
 
-  /* CELDAS DE PISTAS */
-
   .narutodle .cell {
-    width: 68px !important;
-    min-width: 68px !important;
-    max-width: 68px !important;
-    min-height: 42px;
-    height: auto;
-    padding: 3px;
-    border-radius: 5px;
-    font-size: 9px;
-    line-height: 1.15;
-    overflow-wrap: anywhere;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    font-size: 7px;
+    line-height: 1.1;
   }
 
-  .narutodle .cell:hover {
-    transform: none;
-  }
-
-  /* FLECHAS */
+  .narutodle .cell:hover { transform: none; }
 
   .narutodle .arc-arrow {
     width: 18px;
     height: 22px;
     font-size: 2.5rem;
-    opacity: 0.28;
+    opacity: .28;
   }
 
   .narutodle .arc-cell .arc-arrow {
-    width: 30px;
-    height: 38px;
+    width: 25px;
+    height: 30px;
   }
 
-  .narutodle .arc-cell .cell-text {
-    font-size: 9px;
-  }
-
-  /* INTENTOS */
+  .narutodle .arc-cell .cell-text { font-size: 7px; }
 
   .narutodle .attempts {
     margin: 15px auto 4px;
     padding: 8px 14px;
     font-size: 11px;
   }
-
-  /* VICTORIA */
 
   .narutodle .victory-overlay {
     position: static !important;
@@ -993,22 +898,10 @@
     border-radius: 15px;
   }
 
-  .narutodle .victory-modal h2 {
-    font-size: 19px;
-  }
-
-  .narutodle .victory-portrait {
-    width: 100px;
-    height: 100px;
-  }
-
-  .narutodle .victory-name {
-    font-size: 20px;
-  }
-
-  .narutodle .victory-countdown strong {
-    font-size: 20px;
-  }
+  .narutodle .victory-modal h2 { font-size: 19px; }
+  .narutodle .victory-portrait { width: 100px; height: 100px; }
+  .narutodle .victory-name { font-size: 20px; }
+  .narutodle .victory-countdown strong { font-size: 20px; }
 
   .narutodle .victory-button,
   .narutodle .share-button {
@@ -1016,141 +909,85 @@
     font-size: 12px;
   }
 
-  .narutodle .share-result {
-    padding: 10px;
-    font-size: 11px;
-  }
-
-  /* PIE */
-
-  .narutodle footer {
-    margin-top: 18px;
-    font-size: 10px;
-  }
+  .narutodle .share-result { padding: 10px; font-size: 11px; }
+  .narutodle footer { margin-top: 18px; font-size: 10px; }
 }
 
-/* =====================================
-   CELULARES PEQUEÑOS
-===================================== */
+/* CELULARES PEQUEÑOS */
 
 @media (max-width: 380px) {
-
-  .narutodle {
-    padding: 14px 6px 20px;
-  }
-
-  .narutodle .header {
-    padding-top: 45px;
-  }
+  .narutodle { padding: 14px 6px 20px; }
+  .narutodle .header { padding-top: 45px; }
 
   .narutodle .narutodle-title {
     width: 100%;
     aspect-ratio: 4 / 1;
   }
 
-  .narutodle .game {
-    padding: 13px 6px;
-  }
-
-  /* 1 PERSONAJE + 7 ATRIBUTOS */
+  .narutodle .game { padding: 13px 6px; }
 
   .narutodle .result-row {
-    grid-template-columns: 58px repeat(7, 62px);
+    grid-template-columns: repeat(8,44px);
     gap: 3px;
   }
 
-  .narutodle .result-row > div {
-    width: 62px !important;
-    min-width: 62px !important;
-    max-width: 62px !important;
-    font-size: 8px;
-  }
-
-  .narutodle .result-row > div:first-child {
-    width: 58px !important;
-    min-width: 58px !important;
-    max-width: 58px !important;
-  }
-
-  .narutodle .result-row.labels > div {
+  .narutodle .result-row > div,
+  .narutodle .result-row > div:first-child,
+  .narutodle .name-cell,
+  .narutodle .cell {
+    flex: none !important;
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
     font-size: 6px;
+    padding: 2px;
   }
 
-  /* FOTO */
-
-  .narutodle .name-cell {
-    width: 58px !important;
-    min-width: 58px !important;
-    max-width: 58px !important;
-    height: 42px;
-    min-height: 42px;
-    max-height: 42px;
-  }
+  .narutodle .result-row.labels > div { font-size: 5px; }
 
   .narutodle .character-image {
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
-    height: 42px !important;
-    min-height: 42px !important;
-    max-height: 42px !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
   }
 
-  /* ATRIBUTOS */
-
-  .narutodle .cell {
-    width: 62px !important;
-    min-width: 62px !important;
-    max-width: 62px !important;
-    min-height: 42px;
-    font-size: 8px;
-    padding: 2px;
-  }
-
-  .narutodle .arc-cell .cell-text {
-    font-size: 8px;
-  }
+  .narutodle .arc-cell .cell-text { font-size: 6px; }
 
   .narutodle .arc-cell .arc-arrow {
-    width: 25px;
-    height: 32px;
+    width: 22px;
+    height: 28px;
     font-size: 2rem;
   }
 }
 
-/* =====================================
-   ACCESIBILIDAD
-===================================== */
+/* ACCESIBILIDAD */
 
 @media (prefers-reduced-motion: reduce) {
-  .narutodle *,
-  .narutodle *::before,
-  .narutodle *::after {
-    animation-duration: 0.01ms !important;
+  .narutodle *, .narutodle *::before, .narutodle *::after {
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 
-/* TEXTO DEL CONTADOR EN EL BOX DE VICTORIA */
+/* TEXTO DEL CONTADOR DE VICTORIA */
 
-.narutodle .victory-countdown {
-  color: #e8edf4 !important;
-}
-
-.narutodle .victory-countdown strong {
-  color: #ffffff !important;
-}
-.narutodle .victory-countdown {
-  color: #ffffff !important;
-}
 .narutodle .victory-countdown,
 .narutodle .victory-countdown span,
 .narutodle .victory-countdown p,
-.narutodle .victory-countdown div {
+.narutodle .victory-countdown div,
+.narutodle .victory-countdown strong {
   color: #ffffff !important;
 }
-/* ELIMINAR EL TRÉBOL DECORATIVO DEL FONDO DE NARUTODLE */
+
+/* ELIMINAR EL TRÉBOL DECORATIVO */
 
 .narutodle::before {
   content: none !important;
