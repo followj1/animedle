@@ -1890,3 +1890,572 @@ body {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+
+/* =========================================
+   CLOVERDLE MOBILE COMPACT - VERSION 1
+   Optimización exclusiva para celulares
+========================================= */
+
+@media (max-width: 700px) {
+
+  /* PANTALLA GENERAL */
+
+  .page {
+    padding: 8px 8px 10px !important;
+    min-height: 100vh;
+  }
+
+  /* ENCABEZADO */
+
+  .header {
+    margin: 0 auto 10px !important;
+    padding: 0 !important;
+  }
+
+  header.header h1.cloverdle-title {
+    font-size: clamp(48px, 13vw, 66px) !important;
+    line-height: 1 !important;
+    margin: 5px 0 8px !important;
+  }
+
+  .cloverdle-back {
+    display: block;
+    margin: 0 auto 5px;
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 7px;
+  }
+
+  /* CONTADOR */
+
+  .daily-countdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 0;
+    width: fit-content;
+    margin: 8px auto 12px !important;
+    padding: 8px 13px !important;
+    font-size: 11px !important;
+    border-radius: 9px;
+  }
+
+  .daily-countdown strong {
+    font-size: 1.2rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* PANEL DEL JUEGO */
+
+  .game {
+    padding: 12px 9px !important;
+    border-radius: 11px;
+  }
+
+  .game h2 {
+    margin: 0 0 5px !important;
+    font-size: 17px !important;
+    line-height: 1.3;
+  }
+
+  .instructions {
+    margin: 4px 0 10px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* BUSCADOR */
+
+  .search {
+    margin: 0 0 10px !important;
+  }
+
+  .search input {
+    height: 46px !important;
+    min-height: 46px !important;
+    padding: 0 11px !important;
+    font-size: 16px !important;
+    border-radius: 8px;
+  }
+
+  /* SUGERENCIAS */
+
+  .suggestions {
+    max-height: 200px !important;
+  }
+
+  .suggestions .suggestion {
+    min-height: 54px !important;
+    padding: 5px 8px !important;
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    gap: 8px !important;
+    font-size: 12px !important;
+  }
+
+  .suggestions .suggestion-portrait {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  /* LEYENDA */
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 6px 12px !important;
+    margin: 0 0 8px !important;
+    font-size: 9px !important;
+  }
+
+  .legend span {
+    gap: 4px !important;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* TABLA */
+
+  .results {
+    padding-bottom: 6px !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .result-row {
+    grid-template-columns: 76px repeat(6, 88px) !important;
+    min-width: 604px !important;
+    width: max-content;
+    gap: 4px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .result-row > div {
+    min-height: 48px !important;
+    padding: 5px !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    border-radius: 6px;
+  }
+
+  .result-row.labels > div {
+    min-height: 35px !important;
+    padding: 3px !important;
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* IMÁGENES DE PERSONAJES */
+
+  .result-row .character-cell {
+    width: 76px !important;
+    min-width: 76px !important;
+    height: 76px !important;
+    min-height: 76px !important;
+  }
+
+  .character-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  /* PRIMERA COLUMNA FIJA */
+
+  .result-row > div:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+  }
+
+  .result-row.labels > div:first-child {
+    z-index: 4;
+    background: #F5F0E6;
+  }
+
+  .result-row:not(.labels) > .name-cell {
+    background: #18221b !important;
+  }
+
+  /* FLECHAS DE LOS ARCOS */
+
+  .arc-cell .arc-arrow {
+    width: 48px !important;
+    height: 62px !important;
+  }
+
+  /* INTENTOS */
+
+  .attempts {
+    margin: 10px 0 0 !important;
+    font-size: 11px !important;
+  }
+
+  /* VICTORIA */
+
+  .victory-overlay {
+    padding: 10px 5px !important;
+    gap: 8px !important;
+  }
+
+  .victory-modal,
+  .share-card {
+    padding: 14px 12px !important;
+    border-radius: 10px;
+  }
+
+  .victory-portrait {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 8px auto !important;
+  }
+
+  .victory-label {
+    font-size: 1rem !important;
+    margin: 5px 0 !important;
+  }
+
+  .victory-modal h2 {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .victory-name {
+    font-size: 1.2rem !important;
+    margin: 5px 0 !important;
+  }
+
+  .victory-countdown {
+    padding: 9px !important;
+    margin: 8px 0 !important;
+  }
+
+  .victory-countdown strong {
+    font-size: 1.3rem !important;
+  }
+
+  .victory-button,
+  .share-button {
+    min-height: 40px !important;
+    padding: 9px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* FOOTER */
+
+  footer {
+    padding: 10px 0 5px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* CELULARES PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+  .page {
+    padding-right: 6px !important;
+    padding-left: 6px !important;
+  }
+
+  header.header h1.cloverdle-title {
+    font-size: 46px !important;
+  }
+
+  .game {
+    padding: 10px 7px !important;
+  }
+
+  .result-row {
+    grid-template-columns: 70px repeat(6, 84px) !important;
+    min-width: 574px !important;
+  }
+
+  .result-row .character-cell {
+    width: 70px !important;
+    min-width: 70px !important;
+    height: 70px !important;
+    min-height: 70px !important;
+  }
+}
+
+/* =====================================
+   CLOVERDLE - CELDAS COMPACTAS EN MÓVIL
+===================================== */
+
+@media (max-width: 700px) {
+  .results {
+    gap: 5px !important;
+  }
+
+  .labels {
+    grid-template-columns: 76px repeat(6, 76px) !important;
+    min-width: 532px !important;
+    gap: 3px !important;
+  }
+
+  .result-row {
+    grid-template-columns: 76px repeat(6, 76px) !important;
+    min-width: 532px !important;
+    gap: 3px !important;
+  }
+
+  .character-cell {
+    width: 76px !important;
+    min-width: 76px !important;
+    height: 76px !important;
+  }
+
+  .character-image {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .cell {
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 3px !important;
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+  }
+
+  .cell-text {
+    font-size: 10px !important;
+  }
+
+  .arc-cell {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .arc-arrow {
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .labels,
+  .result-row {
+    grid-template-columns: 70px repeat(6, 70px) !important;
+    min-width: 490px !important;
+  }
+
+  .character-cell {
+    width: 70px !important;
+    min-width: 70px !important;
+    height: 70px !important;
+  }
+
+  .character-image {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .cell {
+    height: 36px !important;
+    min-height: 36px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* ==========================================
+   CLOVERDLE - AJUSTE DEFINITIVO DE TABLA MÓVIL
+========================================== */
+
+@media (max-width: 700px) {
+
+  /* Columnas más angostas */
+  .results .result-row {
+    display: grid !important;
+    grid-template-columns: 64px repeat(6, 68px) !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    gap: 3px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Encabezados */
+  .results .result-row.labels > div {
+    min-height: 34px !important;
+    padding: 2px !important;
+    font-size: 8px !important;
+  }
+
+  /* Celdas de atributos */
+  .results .result-row:not(.labels) > div:not(.character-cell) {
+    min-height: 42px !important;
+    height: 42px !important;
+    padding: 3px !important;
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+    border-radius: 5px !important;
+  }
+
+  /* Casilla de la foto */
+  .results .result-row .character-cell {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 64px !important;
+    min-width: 64px !important;
+    height: 82px !important;
+    min-height: 82px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    overflow: hidden !important;
+  }
+
+  /* Foto rectangular y más pequeña */
+  .results .result-row .character-cell .character-image {
+    display: block !important;
+    width: 56px !important;
+    min-width: 56px !important;
+    height: 76px !important;
+    min-height: 76px !important;
+    max-width: 56px !important;
+    max-height: 76px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    border-radius: 5px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Primera columna fija */
+  .results .result-row > div:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+  }
+
+  .results .result-row.labels > div:first-child {
+    z-index: 4;
+    background: #F5F0E6 !important;
+  }
+}
+
+/* CELULARES DE MENOS DE 380 PX */
+
+@media (max-width: 380px) {
+
+  .results .result-row {
+    grid-template-columns: 58px repeat(6, 62px) !important;
+    gap: 3px !important;
+  }
+
+  .results .result-row .character-cell {
+    width: 58px !important;
+    min-width: 58px !important;
+    height: 74px !important;
+    min-height: 74px !important;
+  }
+
+  .results .result-row .character-cell .character-image {
+    width: 50px !important;
+    min-width: 50px !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    max-width: 50px !important;
+    max-height: 68px !important;
+  }
+}
+/* ==========================================
+   FOTO DEL PERSONAJE: MISMO ALTO QUE LAS CELDAS
+========================================== */
+
+@media (max-width: 700px) {
+
+  .results .result-row .character-cell {
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .results .result-row .character-cell .character-image {
+    width: 34px !important;
+    min-width: 34px !important;
+    max-width: 34px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    margin: 0 auto !important;
+    border-radius: 4px !important;
+  }
+}/* ==========================================
+   CLOVERDLE - LETRA MÁS PEQUEÑA EN MÓVIL
+========================================== */
+
+@media (max-width: 700px) {
+
+  /* Texto de las celdas */
+  .results .result-row:not(.labels) > div:not(.character-cell) {
+    font-size: 9px !important;
+    line-height: 1.1 !important;
+    padding: 2px !important;
+  }
+
+  /* Encabezados de las columnas */
+  .results .result-row.labels > div {
+    font-size: 7px !important;
+    line-height: 1.1 !important;
+    padding: 2px !important;
+  }
+
+  /* Flechas de los arcos */
+  .results .arc-arrow {
+    font-size: 9px !important;
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 380px) {
+
+  .results .result-row:not(.labels) > div:not(.character-cell) {
+    font-size: 8px !important;
+  }
+
+  .results .result-row.labels > div {
+    font-size: 6px !important;
+  }
+}/* ==========================================
+   FLECHAS DE LOS ARCOS MÁS PEQUEÑAS
+========================================== */
+
+@media (max-width: 700px) {
+  .results .arc-arrow {
+    font-size: 7px !important;
+    margin: 0 1px !important;
+    line-height: 1 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .results .arc-arrow {
+    font-size: 6px !important;
+  }
+}
+@media (max-width: 700px) {
+  .results .arc-arrow {
+    font-size: 5px !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .results .arc-arrow {
+    font-size: 4px !important;
+  }
+}
