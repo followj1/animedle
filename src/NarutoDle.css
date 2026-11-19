@@ -1150,3 +1150,9 @@
 .narutodle .victory-countdown div {
   color: #ffffff !important;
 }
+/* ELIMINAR EL TRÉBOL DECORATIVO DEL FONDO DE NARUTODLE */
+
+.narutodle::before {
+  content: none !important;
+  display: none !important;
+}
