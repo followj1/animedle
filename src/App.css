@@ -1300,3 +1300,23 @@ footer {
     max-width: 58px;
   }
 }
+/* TEXTO "SIGUIENTE PERSONAJE EN" - CLOVERDLE */
+
+.cloverdle .victory-countdown,
+.cloverdle .victory-countdown span,
+.cloverdle .victory-countdown p,
+.cloverdle .victory-countdown div {
+  color: #ffffff !important;
+}
+/* CORREGIR TEXTO "SIGUIENTE PERSONAJE EN" */
+
+.victory-modal .victory-countdown {
+  color: #ffffff !important;
+}
+
+.victory-modal .victory-countdown span,
+.victory-modal .victory-countdown p,
+.victory-modal .victory-countdown div,
+.victory-modal .victory-countdown label {
+  color: #ffffff !important;
+}

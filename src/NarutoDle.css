@@ -8,7 +8,7 @@
 }
 
 /* =====================================
-   NARUTODLE - DISEÑO CON FONDO ORIGINAL
+   NARUTODLE - DISEÑO GENERAL
 ===================================== */
 
 .narutodle {
@@ -22,6 +22,7 @@
 
   min-height: 100vh;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   padding: 35px 20px 45px;
   background: url('/fondonarutodle.jpg') center center / cover fixed no-repeat;
@@ -72,7 +73,7 @@
   box-shadow: 0 5px 14px rgba(38, 63, 88, 0.09);
 }
 
-/* LOGO NARUTODLE */
+/* LOGO */
 
 .narutodle .narutodle-title {
   display: block;
@@ -80,12 +81,10 @@
   aspect-ratio: 4 / 1;
   height: auto;
   margin: 12px auto 8px;
-
   background-image: url('/narutodlelogo.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-
   font-size: 0 !important;
   line-height: 0;
   color: transparent !important;
@@ -223,11 +222,11 @@
   right: 0;
   max-height: 320px;
   overflow-y: auto;
+  overflow-x: hidden;
   border: 1px solid var(--naruto-border);
   border-radius: 12px;
   background: white;
   box-shadow: 0 12px 30px rgba(30, 45, 65, 0.13);
-  overflow-x: hidden;
 }
 
 .narutodle .suggestion {
@@ -259,10 +258,10 @@
 
 .narutodle .suggestion-portrait {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border: 1px solid #e8edf2;
-  border-radius: 8px;
+  border-radius: 7px;
   object-fit: cover;
   background: #f1f3f6;
 }
@@ -312,11 +311,15 @@
   background: #df8585;
 }
 
-/* TABLA DE RESULTADOS */
+/* =====================================
+   TABLA DE RESULTADOS - ESCRITORIO
+===================================== */
 
 .narutodle .results {
   display: block;
+  position: relative;
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 4px 2px 14px;
@@ -383,7 +386,7 @@
   text-transform: uppercase;
 }
 
-/* CELDA DE PERSONAJE: SOLO IMAGEN */
+/* FOTO DEL PERSONAJE */
 
 .narutodle .name-cell {
   display: flex;
@@ -541,33 +544,36 @@
   font-weight: 800;
 }
 
-/* VICTORIA */
+/* =====================================
+   VICTORIA Y RESULTADOS
+===================================== */
 
 .narutodle .victory-overlay {
-  position: fixed;
-  z-index: 1000;
-  inset: 0;
+  position: static !important;
+  inset: auto !important;
+  z-index: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 18px;
-  padding: 20px;
-  overflow-y: auto;
-  background: rgba(27, 42, 58, 0.76);
-  backdrop-filter: blur(5px);
+  width: 100%;
+  padding: 24px 16px;
+  overflow: visible;
+  background: transparent !important;
+  backdrop-filter: none;
 }
 
 .narutodle .victory-modal,
 .narutodle .share-card {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 500px;
   padding: 30px;
   border: 1px solid rgba(255,255,255,0.8);
   border-radius: 19px;
   background: white;
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 18px 45px rgba(38, 63, 88, 0.12);
   text-align: center;
 }
 
@@ -689,105 +695,352 @@
   font-weight: 500;
 }
 
-/* MÓVILES */
+/* =====================================
+   MÓVILES
+===================================== */
 
 @media (max-width: 700px) {
+
   .narutodle {
-    padding: 18px 10px 30px;
+    padding: 18px 8px 25px;
     background-attachment: scroll;
+    overflow-x: clip;
   }
 
   .narutodle .header {
-    padding-top: 50px;
-    margin-bottom: 23px;
+    padding-top: 48px;
+    margin-bottom: 18px;
   }
 
   .narutodle .cloverdle-back {
     left: 0;
     top: 0;
-    padding: 9px 12px;
-    font-size: 11px;
+    padding: 8px 11px;
+    font-size: 10px;
   }
 
-  /* LOGO EN CELULARES */
+  /* LOGO */
 
   .narutodle .narutodle-title {
     width: min(100%, 520px);
     aspect-ratio: 4 / 1;
-    margin: 8px auto 12px;
+    margin: 8px auto 10px;
   }
+
+  /* INFORMACIÓN */
 
   .narutodle .header-info p {
-    font-size: 12px;
+    font-size: 11px;
+    margin: 5px 0 10px;
   }
 
+  .narutodle .mode {
+    padding: 7px 12px;
+    font-size: 9px;
+  }
+
+  .narutodle .daily-countdown {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 12px auto 0;
+    font-size: 10px;
+  }
+
+  .narutodle .daily-countdown strong {
+    font-size: 14px;
+  }
+
+  /* CONTENEDOR */
+
   .narutodle .game {
-    padding: 22px 12px;
-    border-radius: 15px;
+    padding: 16px 9px;
+    border-radius: 14px;
   }
 
   .narutodle .game h2 {
-    font-size: 21px;
+    font-size: 19px;
+    margin-bottom: 8px;
   }
 
   .narutodle .instructions {
-    font-size: 12px;
+    margin-bottom: 18px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* BUSCADOR */
+
+  .narutodle .search {
+    margin-bottom: 18px;
   }
 
   .narutodle .search input {
     height: 48px;
+    min-height: 48px;
+    padding: 0 13px;
+    font-size: 16px;
+  }
+
+  .narutodle .suggestions {
+    max-height: 280px;
+    border-radius: 10px;
+  }
+
+  .narutodle .suggestion {
+    gap: 9px;
+    padding: 8px 10px;
     font-size: 12px;
   }
 
+  .narutodle .suggestion-portrait {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* LEYENDA */
+
   .narutodle .legend {
-    gap: 11px;
-    font-size: 10px;
-  }
-
-  .narutodle .result-row > div {
-    flex-basis: 130px !important;
-    width: 130px !important;
-    min-width: 130px !important;
-    max-width: 130px !important;
-  }
-
-  .narutodle .result-row > div:first-child {
-    flex-basis: 100px !important;
-    width: 100px !important;
-    min-width: 100px !important;
-    max-width: 100px !important;
-  }
-
-  .narutodle .result-row.labels > div {
+    gap: 10px;
+    margin: 17px 0;
     font-size: 9px;
   }
 
-  .narutodle .name-cell,
-  .narutodle .cell {
-    min-height: 98px;
-    font-size: 10px;
+  .narutodle .legend span {
+    gap: 5px;
   }
 
-  .narutodle .character-image {
-    width: 88px;
-    height: 88px;
-    flex-basis: 88px;
+  .narutodle .dot {
+    width: 8px;
+    height: 8px;
   }
-}
 
-@media (max-width: 380px) {
+  /* TABLA: 1 PERSONAJE + 7 ATRIBUTOS */
+
+  .narutodle .results {
+    display: block;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 3px 2px 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5df #f1f4f7;
+  }
+
+  .narutodle .result-row {
+    display: grid !important;
+    grid-template-columns: 64px repeat(7, 68px);
+    align-items: stretch;
+    gap: 3px;
+    width: max-content !important;
+    min-width: 0;
+    margin-bottom: 6px;
+  }
+
   .narutodle .result-row > div {
-    flex-basis: 120px !important;
-    width: 120px !important;
-    min-width: 120px !important;
-    max-width: 120px !important;
+    flex: initial !important;
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    min-height: 42px;
+    height: auto;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 9px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
   }
 
   .narutodle .result-row > div:first-child {
-    flex-basis: 90px !important;
-    width: 90px !important;
-    min-width: 90px !important;
-    max-width: 90px !important;
+    width: 64px !important;
+    min-width: 64px !important;
+    max-width: 64px !important;
+    flex: initial !important;
+  }
+
+  /* ENCABEZADOS */
+
+  .narutodle .result-row.labels {
+    margin-bottom: 7px;
+  }
+
+  .narutodle .result-row.labels > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 34px;
+    height: auto;
+    padding: 3px 2px;
+    border-radius: 5px;
+    font-size: 7px;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  /* PRIMERA COLUMNA FIJA */
+
+  .narutodle .result-row > div:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+  }
+
+  .narutodle .result-row.labels > div:first-child {
+    z-index: 4;
+    background: #edf1f5;
+  }
+
+  /* CELDA DE FOTO */
+
+  .narutodle .name-cell {
+    display: block;
+    width: 64px !important;
+    min-width: 64px !important;
+    max-width: 64px !important;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    padding: 0 !important;
+    margin: 0;
+    overflow: hidden;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .narutodle .character-image {
+    display: block;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center top;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* CELDAS DE PISTAS */
+
+  .narutodle .cell {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    min-height: 42px;
+    height: auto;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 9px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .narutodle .cell:hover {
+    transform: none;
+  }
+
+  /* FLECHAS */
+
+  .narutodle .arc-arrow {
+    width: 18px;
+    height: 22px;
+    font-size: 2.5rem;
+    opacity: 0.28;
+  }
+
+  .narutodle .arc-cell .arc-arrow {
+    width: 30px;
+    height: 38px;
+  }
+
+  .narutodle .arc-cell .cell-text {
+    font-size: 9px;
+  }
+
+  /* INTENTOS */
+
+  .narutodle .attempts {
+    margin: 15px auto 4px;
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  /* VICTORIA */
+
+  .narutodle .victory-overlay {
+    position: static !important;
+    padding: 10px 5px;
+    gap: 12px;
+  }
+
+  .narutodle .victory-modal,
+  .narutodle .share-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 22px 15px;
+    border-radius: 15px;
+  }
+
+  .narutodle .victory-modal h2 {
+    font-size: 19px;
+  }
+
+  .narutodle .victory-portrait {
+    width: 100px;
+    height: 100px;
+  }
+
+  .narutodle .victory-name {
+    font-size: 20px;
+  }
+
+  .narutodle .victory-countdown strong {
+    font-size: 20px;
+  }
+
+  .narutodle .victory-button,
+  .narutodle .share-button {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .narutodle .share-result {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  /* PIE */
+
+  .narutodle footer {
+    margin-top: 18px;
+    font-size: 10px;
+  }
+}
+
+/* =====================================
+   CELULARES PEQUEÑOS
+===================================== */
+
+@media (max-width: 380px) {
+
+  .narutodle {
+    padding: 14px 6px 20px;
+  }
+
+  .narutodle .header {
+    padding-top: 45px;
   }
 
   .narutodle .narutodle-title {
@@ -796,6 +1049,104 @@
   }
 
   .narutodle .game {
-    padding: 18px 9px;
+    padding: 13px 6px;
   }
+
+  /* 1 PERSONAJE + 7 ATRIBUTOS */
+
+  .narutodle .result-row {
+    grid-template-columns: 58px repeat(7, 62px);
+    gap: 3px;
+  }
+
+  .narutodle .result-row > div {
+    width: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+    font-size: 8px;
+  }
+
+  .narutodle .result-row > div:first-child {
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+  }
+
+  .narutodle .result-row.labels > div {
+    font-size: 6px;
+  }
+
+  /* FOTO */
+
+  .narutodle .name-cell {
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+  }
+
+  .narutodle .character-image {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+  }
+
+  /* ATRIBUTOS */
+
+  .narutodle .cell {
+    width: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+    min-height: 42px;
+    font-size: 8px;
+    padding: 2px;
+  }
+
+  .narutodle .arc-cell .cell-text {
+    font-size: 8px;
+  }
+
+  .narutodle .arc-cell .arc-arrow {
+    width: 25px;
+    height: 32px;
+    font-size: 2rem;
+  }
+}
+
+/* =====================================
+   ACCESIBILIDAD
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .narutodle *,
+  .narutodle *::before,
+  .narutodle *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* TEXTO DEL CONTADOR EN EL BOX DE VICTORIA */
+
+.narutodle .victory-countdown {
+  color: #e8edf4 !important;
+}
+
+.narutodle .victory-countdown strong {
+  color: #ffffff !important;
+}
+.narutodle .victory-countdown {
+  color: #ffffff !important;
+}
+.narutodle .victory-countdown,
+.narutodle .victory-countdown span,
+.narutodle .victory-countdown p,
+.narutodle .victory-countdown div {
+  color: #ffffff !important;
 }

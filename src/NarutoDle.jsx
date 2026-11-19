@@ -3,6 +3,8 @@ import characters from './narutoCharactersImages';
 import { useState, useEffect, useRef } from 'react';
 import './NarutoDle.css';
 
+const STREAK_KEY = 'narutodle-streak';
+
 const fields = [
   ['gender', 'Género'],
   ['affiliations', 'Afiliaciones'],
@@ -57,6 +59,75 @@ function getArgentinaDate() {
     parts.find((item) => item.type === type).value;
 
   return `${part('year')}-${part('month')}-${part('day')}`;
+}
+
+function getDateDifference(newerDate, olderDate) {
+  const [newYear, newMonth, newDay] = newerDate.split('-').map(Number);
+  const [oldYear, oldMonth, oldDay] = olderDate.split('-').map(Number);
+
+  const newer = Date.UTC(newYear, newMonth - 1, newDay);
+  const older = Date.UTC(oldYear, oldMonth - 1, oldDay);
+
+  return Math.round((newer - older) / 86400000);
+}
+
+function getStoredStreak(day) {
+  try {
+    const saved = localStorage.getItem(STREAK_KEY);
+
+    if (!saved) return 0;
+
+    const record = JSON.parse(saved);
+
+    if (
+      !record ||
+      typeof record.currentStreak !== 'number' ||
+      !record.lastWonDay
+    ) {
+      return 0;
+    }
+
+    const difference = getDateDifference(day, record.lastWonDay);
+
+    return difference >= 0 && difference <= 1
+      ? record.currentStreak
+      : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function registerDailyWin(day) {
+  try {
+    const saved = localStorage.getItem(STREAK_KEY);
+    const record = saved ? JSON.parse(saved) : null;
+
+    // Evita sumar dos veces la victoria del mismo día.
+    if (record?.lastWonDay === day) {
+      return record.currentStreak || 0;
+    }
+
+    const difference = record?.lastWonDay
+      ? getDateDifference(day, record.lastWonDay)
+      : null;
+
+    const nextStreak =
+      difference === 1
+        ? (record.currentStreak || 0) + 1
+        : 1;
+
+    localStorage.setItem(
+      STREAK_KEY,
+      JSON.stringify({
+        currentStreak: nextStreak,
+        lastWonDay: day,
+      })
+    );
+
+    return nextStreak;
+  } catch {
+    return 0;
+  }
 }
 
 function getPuzzleNumber(day) {
@@ -167,6 +238,9 @@ export default function NarutoDle({ onBack }) {
   const [countdown, setCountdown] = useState('');
   const [showVictoryModal, setShowVictoryModal] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
+  const [streak, setStreak] = useState(() =>
+    getStoredStreak(getArgentinaDate())
+  );
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -234,6 +308,8 @@ export default function NarutoDle({ onBack }) {
 
         return previousDay;
       });
+
+      setStreak(getStoredStreak(today));
     };
 
     const interval = setInterval(checkDay, 15000);
@@ -284,10 +360,13 @@ export default function NarutoDle({ onBack }) {
     `He encontrado #NarutoDle #${puzzleNumber} ` +
     `en modo clásico en ${guesses.length} ` +
     `${guesses.length === 1 ? 'intento' : 'intentos'} 🍥\n` +
-    shareRows;
+    shareRows +
+    `\n\nhttps://animedle-green.vercel.app/`;
 
   useEffect(() => {
     if (won) {
+      const updatedStreak = registerDailyWin(day);
+      setStreak(updatedStreak);
       setShowVictoryModal(true);
     }
   }, [won, day]);
@@ -545,6 +624,10 @@ export default function NarutoDle({ onBack }) {
         </div>
 
         <p className="attempts">Intentos: {guesses.length}</p>
+
+        <p className="attempts streak-counter">
+          🔥 Racha: {streak} {streak === 1 ? 'día' : 'días'}
+        </p>
 
         {won && (
           <p className="instructions">
