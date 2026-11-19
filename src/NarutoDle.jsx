@@ -367,7 +367,7 @@ export default function NarutoDle({ onBack }) {
           >
             ← Volver a AnimeDle
           </button>
-          <h1 className="cloverdle-title">NarutoDle</h1>
+          <h1 className="narutodle-title">NarutoDle</h1>
         </header>
 
         <section className="game">
@@ -391,7 +391,7 @@ export default function NarutoDle({ onBack }) {
           ← Volver a AnimeDle
         </button>
 
-        <h1 className="cloverdle-title">NarutoDle</h1>
+        <h1 className="narutodle-title">NarutoDle</h1>
 
         <p className="daily-countdown">
           Próximo personaje en

@@ -1,5 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: 'Ninja Naruto';
+  src: url('./fonts/NinjaNaruto-YOn4.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* =====================================
    NARUTODLE - DISEÑO CON FONDO ORIGINAL
@@ -66,15 +72,29 @@
   box-shadow: 0 5px 14px rgba(38, 63, 88, 0.09);
 }
 
-.narutodle .cloverdle-title {
-  margin: 12px 0 8px;
-  color: var(--naruto-orange);
-  font-family: 'Cinzel', serif;
-  font-size: 46px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 0 rgba(201, 88, 37, 0.08);
+/* LOGO NARUTODLE */
+
+.narutodle .narutodle-title {
+  display: block;
+  width: min(100%, 650px);
+  aspect-ratio: 4 / 1;
+  height: auto;
+  margin: 12px auto 8px;
+
+  background-image: url('/narutodlelogo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  font-size: 0 !important;
+  line-height: 0;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  text-indent: -9999px;
+  overflow: hidden;
 }
+
+/* INFORMACIÓN DEL ENCABEZADO */
 
 .narutodle .header-info p {
   margin: 5px 0 14px;
@@ -689,8 +709,12 @@
     font-size: 11px;
   }
 
-  .narutodle .cloverdle-title {
-    font-size: 35px;
+  /* LOGO EN CELULARES */
+
+  .narutodle .narutodle-title {
+    width: min(100%, 520px);
+    aspect-ratio: 4 / 1;
+    margin: 8px auto 12px;
   }
 
   .narutodle .header-info p {
@@ -766,8 +790,9 @@
     max-width: 90px !important;
   }
 
-  .narutodle .cloverdle-title {
-    font-size: 30px;
+  .narutodle .narutodle-title {
+    width: 100%;
+    aspect-ratio: 4 / 1;
   }
 
   .narutodle .game {
