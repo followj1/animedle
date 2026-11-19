@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
 @font-face {
@@ -24,7 +25,9 @@
   --text: #29251f;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html, body, #root {
   width: 100%;
@@ -50,8 +53,13 @@ body {
   background-attachment: fixed;
 }
 
-button, input { font: inherit; }
-button { cursor: pointer; }
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
 
 /* PÁGINA Y ENCABEZADO */
 
@@ -152,8 +160,8 @@ header.header h1.cloverdle-title {
   margin: 18px auto;
   padding: 14px 24px;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  left: auto;
+  transform: none;
   box-sizing: border-box;
   background: rgba(10,10,15,.88);
   border: 1px solid rgba(163,230,53,.45);
@@ -230,14 +238,20 @@ header.header h1.cloverdle-title {
   transition: border-color .2s, box-shadow .2s;
 }
 
-.search input::placeholder { color: #817565; opacity: 1; }
+.search input::placeholder {
+  color: #817565;
+  opacity: 1;
+}
 
 .search input:focus {
   border-color: #28a963;
   box-shadow: 0 0 0 3px rgba(40,169,99,.12);
 }
 
-.search input:disabled { opacity: .7; cursor: not-allowed; }
+.search input:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
 
 /* SUGERENCIAS */
 
@@ -353,7 +367,27 @@ header.header h1.cloverdle-title {
   gap: 8px;
   width: max-content;
   min-width: 0;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
+}
+
+/* CENTRAR FILAS EN PC */
+
+@media (min-width: 701px) {
+  .game .results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .game .results > .result-row {
+    flex: 0 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .result-row > div {
@@ -375,7 +409,9 @@ header.header h1.cloverdle-title {
   overflow-wrap: anywhere;
 }
 
-.result-row.labels { margin-bottom: 10px; }
+.result-row.labels {
+  margin-bottom: 10px;
+}
 
 .result-row.labels > div {
   min-height: 100px;
@@ -459,7 +495,9 @@ header.header h1.cloverdle-title {
   box-shadow: none;
 }
 
-.result-row:not(.labels):hover .cell { filter: none; }
+.result-row:not(.labels):hover .cell {
+  filter: none;
+}
 
 .cell-text {
   position: relative;
@@ -498,7 +536,10 @@ header.header h1.cloverdle-title {
   flex-shrink: 0;
 }
 
-.arc-cell .arc-arrow path { fill: #000; stroke: #000; }
+.arc-cell .arc-arrow path {
+  fill: #000;
+  stroke: #000;
+}
 
 .arc-cell .cell-text {
   position: relative;
@@ -546,7 +587,9 @@ header.header h1.cloverdle-title {
 }
 
 .victory-modal h2, .victory-modal h3,
-.victory-modal p, .victory-modal span { color: #29251f; }
+.victory-modal p, .victory-modal span {
+  color: #29251f;
+}
 
 .victory-close {
   position: absolute;
@@ -567,7 +610,10 @@ header.header h1.cloverdle-title {
   letter-spacing: 2px;
 }
 
-.victory-modal h2 { margin: 0 0 20px; font-size: 1.15rem; }
+.victory-modal h2 {
+  margin: 0 0 20px;
+  font-size: 1.15rem;
+}
 
 .victory-portrait {
   display: block;
@@ -580,9 +626,20 @@ header.header h1.cloverdle-title {
   box-shadow: 0 0 18px rgba(163,230,53,.2);
 }
 
-.victory-name { margin: 8px 0 14px; font-size: 1.4rem; }
-.victory-attempts { margin: 0 0 20px; color: #29251f; }
-.victory-attempts strong { color: #4b7b20; font-size: 1.2rem; }
+.victory-name {
+  margin: 8px 0 14px;
+  font-size: 1.4rem;
+}
+
+.victory-attempts {
+  margin: 0 0 20px;
+  color: #29251f;
+}
+
+.victory-attempts strong {
+  color: #4b7b20;
+  font-size: 1.2rem;
+}
 
 .victory-countdown {
   display: flex;
@@ -615,7 +672,9 @@ header.header h1.cloverdle-title {
   transition: background .2s;
 }
 
-.victory-button:hover { background: #bef264; }
+.victory-button:hover {
+  background: #bef264;
+}
 
 .share-card {
   padding: 22px;
@@ -627,7 +686,10 @@ header.header h1.cloverdle-title {
   text-align: center;
 }
 
-.share-card h3 { margin: 0 0 8px; color: #29251f; }
+.share-card h3 {
+  margin: 0 0 8px;
+  color: #29251f;
+}
 
 .share-description {
   margin: 0 0 16px;
@@ -657,7 +719,9 @@ header.header h1.cloverdle-title {
   cursor: pointer;
 }
 
-.share-button:hover { opacity: .85; }
+.share-button:hover {
+  opacity: .85;
+}
 
 /* FOOTER */
 
@@ -672,28 +736,56 @@ footer {
 /* ANIMACIONES */
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes dropdown {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes cellReveal {
-  0% { opacity: 0; transform: rotateX(90deg); }
-  100% { opacity: 1; transform: rotateX(0); }
+  0% {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
 }
 
 @keyframes cloverGlow {
-  0%, 100% { text-shadow: 0 0 14px rgba(40,209,124,.25); }
-  50% { text-shadow: 0 0 32px rgba(40,209,124,.65); }
+  0%, 100% {
+    text-shadow: 0 0 14px rgba(40,209,124,.25);
+  }
+  50% {
+    text-shadow: 0 0 32px rgba(40,209,124,.65);
+  }
 }
 
 @keyframes winPop {
-  from { opacity: 0; transform: scale(.97); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* TABLETS Y CELULARES */
@@ -760,7 +852,10 @@ footer {
     border-radius: 9px;
   }
 
-  .daily-countdown strong { font-size: 1.2rem; letter-spacing: 1px; }
+  .daily-countdown strong {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
 
   .game {
     width: 100%;
@@ -769,10 +864,23 @@ footer {
     border-radius: 11px;
   }
 
-  .game h2 { margin: 0 0 5px; font-size: 17px; line-height: 1.3; }
-  .instructions { margin: 4px 0 10px; font-size: 11px; line-height: 1.4; }
+  .game h2 {
+    margin: 0 0 5px;
+    font-size: 17px;
+    line-height: 1.3;
+  }
 
-  .search { width: 100%; max-width: 100%; margin: 0 0 10px; }
+  .instructions {
+    margin: 4px 0 10px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .search {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 10px;
+  }
 
   .search input {
     width: 100%;
@@ -801,7 +909,10 @@ footer {
     touch-action: manipulation;
   }
 
-  .suggestions .suggestion-portrait { width: 42px; height: 42px; }
+  .suggestions .suggestion-portrait {
+    width: 42px;
+    height: 42px;
+  }
 
   .legend {
     display: flex;
@@ -811,14 +922,21 @@ footer {
     font-size: 9px;
   }
 
-  .legend span { gap: 4px; }
-  .dot { width: 7px; height: 7px; }
+  .legend span {
+    gap: 4px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
 
   /* TABLA CUADRADA EN CELULAR */
 
   .results {
     position: relative;
     isolation: isolate;
+    display: block;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
@@ -834,7 +952,7 @@ footer {
     width: max-content;
     min-width: 0;
     gap: 3px;
-    margin-bottom: 4px;
+    margin: 0 0 4px;
   }
 
   .results .result-row > div,
@@ -904,7 +1022,9 @@ footer {
     background: #f5f0e6;
   }
 
-  .results .result-row:not(.labels) > .character-cell { background: #18221b; }
+  .results .result-row:not(.labels) > .character-cell {
+    background: #18221b;
+  }
 
   .results .result-row:not(.labels) .arc-cell svg.arc-arrow {
     width: 20px;
@@ -912,9 +1032,15 @@ footer {
     opacity: .28;
   }
 
-  .attempts { margin: 10px 0 0; font-size: 11px; }
+  .attempts {
+    margin: 10px 0 0;
+    font-size: 11px;
+  }
 
-  .victory-overlay { padding: 10px 5px; gap: 8px; }
+  .victory-overlay {
+    padding: 10px 5px;
+    gap: 8px;
+  }
 
   .victory-modal, .share-card {
     width: 100%;
@@ -925,12 +1051,35 @@ footer {
     border-radius: 10px;
   }
 
-  .victory-portrait { width: 100px; height: 100px; margin: 8px auto; }
-  .victory-label { margin: 5px 0; font-size: 1rem; }
-  .victory-modal h2 { margin-bottom: 8px; font-size: 16px; }
-  .victory-name { margin: 5px 0; font-size: 1.2rem; }
-  .victory-countdown { padding: 9px; margin: 8px 0; }
-  .victory-countdown strong { font-size: 1.3rem; }
+  .victory-portrait {
+    width: 100px;
+    height: 100px;
+    margin: 8px auto;
+  }
+
+  .victory-label {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+
+  .victory-modal h2 {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .victory-name {
+    margin: 5px 0;
+    font-size: 1.2rem;
+  }
+
+  .victory-countdown {
+    padding: 9px;
+    margin: 8px 0;
+  }
+
+  .victory-countdown strong {
+    font-size: 1.3rem;
+  }
 
   .victory-button, .share-button {
     min-height: 40px;
@@ -938,17 +1087,37 @@ footer {
     font-size: 12px;
   }
 
-  .share-result { font-size: 11px; line-height: 1.35; }
-  footer { padding: 10px 0 5px; font-size: 9px; }
+  .share-result {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  footer {
+    padding: 10px 0 5px;
+    font-size: 9px;
+  }
 }
 
 /* CELULARES MUY PEQUEÑOS */
 
 @media (max-width: 380px) {
-  .page { padding-right: 6px; padding-left: 6px; }
-  header.header h1.cloverdle-title { font-size: 46px; }
-  .game { padding: 10px 7px; }
-  .legend { gap: 6px; font-size: 8px; }
+  .page {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  header.header h1.cloverdle-title {
+    font-size: 46px;
+  }
+
+  .game {
+    padding: 10px 7px;
+  }
+
+  .legend {
+    gap: 6px;
+    font-size: 8px;
+  }
 
   .results .result-row {
     grid-template-columns: repeat(7,44px);
@@ -971,7 +1140,9 @@ footer {
     font-size: 7px;
   }
 
-  .results .result-row.labels > div { font-size: 5px; }
+  .results .result-row.labels > div {
+    font-size: 5px;
+  }
 
   .results .result-row .character-cell .character-image {
     width: 100% !important;

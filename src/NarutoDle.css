@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'Ninja Naruto';
   src: url('./fonts/NinjaNaruto-YOn4.ttf') format('truetype');
@@ -34,7 +35,7 @@
 
 .narutodle .header {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto 32px;
   text-align: center;
   position: relative;
@@ -140,7 +141,7 @@
 
 .narutodle .game {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 32px;
   border: 1px solid rgba(222,229,237,.9);
@@ -992,4 +993,73 @@
 .narutodle::before {
   content: none !important;
   display: none !important;
+}
+/* CENTRAR ENCABEZADO Y CONTADOR */
+
+.narutodle .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.narutodle .narutodle-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.narutodle .header-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.narutodle .daily-countdown {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.narutodle .daily-countdown strong {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .narutodle .header {
+    align-items: center;
+  }
+
+  .narutodle .header-info {
+    align-items: center;
+  }
+
+  .narutodle .daily-countdown {
+    justify-content: center;
+  }
+}/* CENTRAR LAS FILAS SIN CAMBIAR SU DISTRIBUCIÓN */
+
+@media (min-width: 701px) {
+  .narutodle .results {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .narutodle .result-row {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
