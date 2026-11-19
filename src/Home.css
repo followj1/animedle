@@ -1,0 +1,318 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap');
+
+.animedle-home {
+  min-height: 100vh;
+  width: 100%;
+  padding: 45px 24px 25px;
+  box-sizing: border-box;
+  color: #202b26;
+  font-family: 'Inter', sans-serif;
+
+  /* Fondo original de AnimeDle */
+  background-color: #f5efe4;
+  background-image: url('/fondedle.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.animedle-home * {
+  box-sizing: border-box;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.home-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.home-logo h1 {
+  margin: 0;
+  color: #202b26;
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: -3px;
+}
+
+.logo-icon {
+  color: #32804b;
+  font-size: 43px;
+}
+
+.home-subtitle {
+  margin: 8px 0 0;
+  color: #53645a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.anime-section {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  margin: 0 0 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #202b26;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #657168;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.anime-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e3d9ca;
+  border-radius: 19px;
+  background: #fffdf9;
+  box-shadow: 0 6px 18px rgba(61, 57, 43, 0.10);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 13px 28px rgba(61, 57, 43, 0.15);
+}
+
+.anime-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e9e4da;
+}
+
+.anime-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.anime-info {
+  padding: 19px;
+  text-align: center;
+}
+
+.anime-info h3 {
+  margin: 0 0 7px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 21px;
+  font-weight: 900;
+  color: #202b26;
+}
+
+.anime-info p {
+  min-height: 32px;
+  margin: 0 0 16px;
+  color: #737c73;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.anime-button {
+  width: 100%;
+  min-height: 46px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 11px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.play-button {
+  color: #ffffff;
+  background: #347d4c;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.play-button:hover {
+  background: #28663d;
+}
+
+.play-button span {
+  margin-left: 6px;
+}
+
+.upcoming-button {
+  color: #777a77;
+  background: #e9e7e1;
+  cursor: not-allowed;
+}
+
+.home-footer {
+  margin: 55px auto 0;
+  color: #81877e;
+  text-align: center;
+  font-size: 12px;
+}
+
+.cloverdle-back {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 9px 15px;
+  border: 1px solid #d8ded9;
+  border-radius: 9px;
+  color: #34483b;
+  background: #f5f7f4;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cloverdle-back:hover {
+  background: #e9f0eb;
+}
+
+/* Tablets */
+@media (max-width: 850px) {
+  .animedle-home {
+    padding: 35px 20px 25px;
+  }
+
+  .anime-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .home-header {
+    margin-bottom: 42px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 560px) {
+  .animedle-home {
+    min-height: 100vh;
+    padding: 30px 16px 22px;
+    background-attachment: scroll;
+    background-position: center top;
+  }
+
+  .home-header {
+    margin-bottom: 35px;
+  }
+
+  .home-logo {
+    gap: 7px;
+  }
+
+  .home-logo h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .logo-icon {
+    font-size: 30px;
+  }
+
+  .home-subtitle {
+    max-width: 290px;
+    margin: 8px auto 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  .section-heading p {
+    max-width: 310px;
+    margin: 0 auto;
+    font-size: 13px;
+  }
+
+  .anime-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    gap: 22px;
+  }
+
+  .anime-card {
+    border-radius: 16px;
+  }
+
+  .anime-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .anime-info {
+    padding: 17px;
+  }
+
+  .anime-info h3 {
+    font-size: 20px;
+  }
+
+  .anime-info p {
+    font-size: 13px;
+  }
+
+  .anime-button {
+    min-height: 48px;
+    font-size: 15px;
+  }
+
+  .home-footer {
+    margin-top: 35px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 360px) {
+  .animedle-home {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .home-logo h1 {
+    font-size: 42px;
+  }
+
+  .logo-icon {
+    font-size: 27px;
+  }
+
+  .anime-info {
+    padding: 14px;
+  }
+}
